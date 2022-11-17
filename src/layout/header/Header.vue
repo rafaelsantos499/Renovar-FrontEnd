@@ -65,7 +65,7 @@
       >
         <!--begin::Navbar-->
         <div class="d-flex align-items-stretch" id="kt_header_menu_nav">
-          <KTMenu></KTMenu>
+          <!-- <KTMenu></KTMenu> -->
         </div>
         <!--end::Navbar-->
 

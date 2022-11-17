@@ -106,7 +106,6 @@
             <inline-svg src="media/icons/duotune/general/gen022.svg" />
           </span>
         </div>
-        <KTNotificationsMenu></KTNotificationsMenu>
         <!--end::Menu-->
       </div>
       <!--end::Notifications-->
@@ -147,14 +146,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import KTNotificationsMenu from "@/layout/header/partials/NotificationsMenu.vue";
 import KTQuickLinksMenu from "@/layout/header/partials/QuickLinksMenu.vue";
 import KTUserMenu from "@/layout/header/partials/UserMenu.vue";
 
 export default defineComponent({
   name: "topbar",
   components: {
-    KTNotificationsMenu,
     KTQuickLinksMenu,
     KTUserMenu,
   },

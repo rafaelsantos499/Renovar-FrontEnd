@@ -8,31 +8,6 @@
       @submit="onSubmitLogin"
       :validation-schema="login"
     >
-      <!--begin::Heading-->
-      <div class="text-center mb-10">
-        <!--begin::Title-->
-        <h1 class="text-dark mb-3">Sign In to Metronic</h1>
-        <!--end::Title-->
-
-        <!--begin::Link-->
-        <div class="text-gray-400 fw-bold fs-4">
-          New Here?
-
-          <router-link to="/sign-up" class="link-primary fw-bolder">
-            Create an Account
-          </router-link>
-        </div>
-        <!--end::Link-->
-      </div>
-      <!--begin::Heading-->
-
-      <div class="mb-10 bg-light-info p-8 rounded">
-        <div class="text-info">
-          Use account <strong>admin@demo.com</strong> and password
-          <strong>demo</strong> to continue.
-        </div>
-      </div>
-
       <!--begin::Input group-->
       <div class="fv-row mb-10">
         <!--begin::Label-->
@@ -67,7 +42,7 @@
 
           <!--begin::Link-->
           <router-link to="/password-reset" class="link-primary fs-6 fw-bolder">
-            Forgot Password ?
+            Perdeu sua senha ?
           </router-link>
           <!--end::Link-->
         </div>
@@ -109,49 +84,6 @@
         </button>
         <!--end::Submit button-->
 
-        <!--begin::Separator-->
-        <div class="text-center text-muted text-uppercase fw-bolder mb-5">
-          or
-        </div>
-        <!--end::Separator-->
-
-        <!--begin::Google link-->
-        <a
-          href="#"
-          class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5"
-        >
-          <img
-            alt="Logo"
-            src="media/svg/brand-logos/google-icon.svg"
-            class="h-20px me-3"
-          />
-          Continue with Google
-        </a>
-        <!--end::Google link-->
-
-        <!--begin::Google link-->
-        <a
-          href="#"
-          class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5"
-        >
-          <img
-            alt="Logo"
-            src="media/svg/brand-logos/facebook-4.svg"
-            class="h-20px me-3"
-          />
-          Continue with Facebook
-        </a>
-        <!--end::Google link-->
-
-        <!--begin::Google link-->
-        <a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100">
-          <img
-            alt="Logo"
-            src="media/svg/brand-logos/apple-black.svg"
-            class="h-20px me-3"
-          />
-          Continue with Apple
-        </a>
         <!--end::Google link-->
       </div>
       <!--end::Actions-->

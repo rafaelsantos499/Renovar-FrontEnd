@@ -340,7 +340,7 @@
           <li class="nav-item">
             <router-link
               class="nav-link text-active-primary me-6"
-              to="/crafted/pages/profile/campaigns"
+              to="#"
               active-class="active"
             >
               Campaigns
@@ -373,7 +373,7 @@
           <li class="nav-item">
             <router-link
               class="nav-link text-active-primary me-6"
-              to="/crafted/pages/profile/activity"
+              to="#"
               active-class="active"
             >
               Activity

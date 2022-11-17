@@ -39,7 +39,7 @@ const DocMenuConfig = [
               },
               {
                 heading: "campaigns",
-                route: "/crafted/pages/profile/campaigns",
+                route: "#",
               },
               {
                 heading: "documents",

@@ -22,65 +22,14 @@ const routes: Array<RouteRecordRaw> = [
         path: "/crafted/pages/profile",
         name: "profile",
         component: () => import("@/components/page-layouts/Profile.vue"),
-        children: [
-          {
-            path: "overview",
-            name: "profile-overview",
-            component: () =>
-              import("@/views/crafted/pages/profile/Overview.vue"),
-          },
-          {
-            path: "projects",
-            name: "profile-projects",
-            component: () =>
-              import("@/views/crafted/pages/profile/Projects.vue"),
-          },
-          {
-            path: "campaigns",
-            name: "profile-campaigns",
-            component: () =>
-              import("@/views/crafted/pages/profile/Campaigns.vue"),
-          },
-          {
-            path: "documents",
-            name: "profile-documents",
-            component: () =>
-              import("@/views/crafted/pages/profile/Documents.vue"),
-          },
-          {
-            path: "connections",
-            name: "profile-connections",
-            component: () =>
-              import("@/views/crafted/pages/profile/Connections.vue"),
-          },
-          {
-            path: "activity",
-            name: "profile-activity",
-            component: () =>
-              import("@/views/crafted/pages/profile/Activity.vue"),
-          },
-        ],
+        children: [],
       },
-      {
-        path: "/crafted/pages/wizards/horizontal",
-        name: "horizontal-wizard",
-        component: () => import("@/views/crafted/pages/wizards/Horizontal.vue"),
-      },
-      {
-        path: "/crafted/pages/wizards/vertical",
-        name: "vertical-wizard",
-        component: () => import("@/views/crafted/pages/wizards/Vertical.vue"),
-      },
+
       {
         path: "/crafted/account",
         name: "account",
         component: () => import("@/views/crafted/account/Account.vue"),
         children: [
-          {
-            path: "overview",
-            name: "account-overview",
-            component: () => import("@/views/crafted/account/Overview.vue"),
-          },
           {
             path: "settings",
             name: "account-settings",
@@ -103,21 +52,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "apps-customers-details",
         component: () => import("@/views/apps/customers/CustomerDetails.vue"),
       },
-      {
-        path: "/apps/chat/private-chat",
-        name: "apps-private-chat",
-        component: () => import("@/views/apps/chat/Chat.vue"),
-      },
-      {
-        path: "/apps/chat/group-chat",
-        name: "apps-group-chat",
-        component: () => import("@/views/apps/chat/Chat.vue"),
-      },
-      {
-        path: "/apps/chat/drawer-chat",
-        name: "apps-drawer-chat",
-        component: () => import("@/views/apps/chat/DrawerChat.vue"),
-      },
+
       {
         path: "/crafted/modals/general/invite-friends",
         name: "modals-general-invite-friends",
