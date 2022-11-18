@@ -42,8 +42,8 @@
         <a href="#">
           <img
             alt="Logo"
-            src="media/logos/logo-4.png"
-            class="logo-default h-25px"
+            src="media/logos/Agua-solar-apr.png"
+            class="logo-default h-60px"
           />
           <img
             alt="Logo"

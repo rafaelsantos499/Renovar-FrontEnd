@@ -137,25 +137,14 @@ export default defineComponent({
         store
           .dispatch(Actions.LOGIN, values)
           .then(() => {
-            Swal.fire({
-              text: "All is cool! Now you submit this form",
-              icon: "success",
-              buttonsStyling: false,
-              confirmButtonText: "Ok, got it!",
-              customClass: {
-                confirmButton: "btn fw-bold btn-light-primary",
-              },
-            }).then(function () {
-              // Go to page after successfully login
-              router.push({ name: "dashboard" });
-            });
+            router.push({ name: "dashboard" });
           })
           .catch(() => {
             Swal.fire({
-              text: store.getters.getErrors[0],
+              text: store.getters.getErrors,
               icon: "error",
               buttonsStyling: false,
-              confirmButtonText: "Try again!",
+              confirmButtonText: "Tentar Novamente!",
               customClass: {
                 confirmButton: "btn fw-bold btn-light-danger",
               },

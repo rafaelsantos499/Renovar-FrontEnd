@@ -4,6 +4,10 @@ import VueAxios from "vue-axios";
 import JwtService from "@/core/services/JwtService";
 import { AxiosResponse, AxiosRequestConfig } from "axios";
 
+const axiosIstance = axios.create({
+  baseURL: "http://127.0.0.1:8000/api/v1/",
+});
+
 /**
  * @description service to call HTTP request via Axios
  */
@@ -73,7 +77,7 @@ class ApiService {
     resource: string,
     params: AxiosRequestConfig
   ): Promise<AxiosResponse> {
-    return ApiService.vueInstance.axios.post(`${resource}`, params);
+    return axiosIstance.post(resource, params);
   }
 
   /**
