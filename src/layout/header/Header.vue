@@ -47,7 +47,7 @@
           />
           <img
             alt="Logo"
-            src="media/logos/logo-5.png"
+            src="media/logos/Agua-solar-apr.png"
             class="logo-sticky h-25px"
           />
         </a>
