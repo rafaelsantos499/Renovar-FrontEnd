@@ -16,6 +16,18 @@ const DocMenuConfig = [
     ],
   },
   {
+    heading: "Principal",
+    router: "/principal",
+    pages: [
+      {
+        heading: "Clientes",
+        route: "/cliente",
+        svgIcon: "media/icons/duotune/general/gen022.svg",
+        fontIcon: "bi-archive",
+      },
+    ],
+  },
+  {
     heading: "craft",
     route: "/crafted",
     pages: [
