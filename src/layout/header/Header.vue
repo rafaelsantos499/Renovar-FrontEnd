@@ -42,12 +42,12 @@
         <a href="#">
           <img
             alt="Logo"
-            src="media/logos/logo-4.png"
-            class="logo-default h-25px"
+            src="media/logos/Agua-solar-apr.png"
+            class="logo-default h-60px"
           />
           <img
             alt="Logo"
-            src="media/logos/logo-5.png"
+            src="media/logos/Agua-solar-apr.png"
             class="logo-sticky h-25px"
           />
         </a>
@@ -65,7 +65,7 @@
       >
         <!--begin::Navbar-->
         <div class="d-flex align-items-stretch" id="kt_header_menu_nav">
-          <KTMenu></KTMenu>
+          <!-- <KTMenu></KTMenu> -->
         </div>
         <!--end::Navbar-->
 

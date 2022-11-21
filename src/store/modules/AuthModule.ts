@@ -1,34 +1,44 @@
 import ApiService from "@/core/services/ApiService";
+import ApiServicee from "@/services/ApiServicee";
 import JwtService from "@/core/services/JwtService";
 import { ApiAuth } from "@/services/ApiAuth";
 import { Api } from "@/services/ApiServiceAxios";
 import { Actions, Mutations } from "@/store/enums/StoreEnums";
 import { Module, Action, Mutation, VuexModule } from "vuex-module-decorators";
+
 import { UserData } from "@/models/User";
 import router from "@/router";
 
 export interface User {
   token: string;
   usuario: UserData;
+
+import ApiAuth from "@/services/ApiAuth";
+import type { UserData } from "@/models/User";
+
+export interface User {
+  token: string;
+  user: UserData;
+
 }
 
 export interface UserAuthInfo {
   errors: Array<string>;
-  user: User;
+  user: UserData;
   isAuthenticated: boolean;
 }
 
 @Module
 export default class AuthModule extends VuexModule implements UserAuthInfo {
   errors = [];
-  user = {} as User;
+  user = {} as UserData;
   isAuthenticated = !!JwtService.getToken();
 
   /**
    * Get current user object
    * @returns User
    */
-  get currentUser(): User {
+  get currentUser(): UserData {
     return this.user;
   }
 
@@ -53,8 +63,10 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
     this.errors = error;
   }
 
-  @Mutation
-  [Mutations.SET_AUTH](user: User) {
+
+
+  [Mutations.SET_AUTH](user: UserData) {
+    // console.log(user);
     this.isAuthenticated = true;
     this.user = user;
     this.errors = [];
@@ -73,7 +85,7 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
   @Mutation
   [Mutations.PURGE_AUTH]() {
     this.isAuthenticated = false;
-    this.user = {} as User;
+    this.user = {} as UserData;
     this.errors = [];
     JwtService.destroyToken();
   }
@@ -82,6 +94,10 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
   [Actions.LOGIN](credentials) {
     return new Promise<void>((resolve, reject) => {
       ApiAuth.login(credentials).then(({ data }) => {
+
+
+
+
         if (data.error) {
           this.context.commit(Mutations.SET_ERROR, data.message);
           reject();
@@ -89,7 +105,6 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
         }
         this.context.commit(Mutations.SET_AUTH, data.data.usuario);
         JwtService.saveToken(data.data.token);
-
         resolve(data);
       });
     });
@@ -141,7 +156,8 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
           this.context.commit(Mutations.SET_AUTH, data.data.usuario);
           resolve();
         })
-        .catch(() => reject());
+        .catch(() => reject());  
+
     });
   }
 

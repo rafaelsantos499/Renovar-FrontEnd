@@ -1,3 +1,4 @@
+
 import { login } from "@/models/User";
 import { AxiosResponse } from "axios";
 import { Api } from "./ApiServiceAxios";
@@ -10,3 +11,18 @@ export const ApiAuth = {
     return Api.validateToken("user", token);
   },
 };
+
+import ApiService from "@/services/ApiServicee";
+import { AxiosResponse } from "axios";
+
+const ApiAuth = {
+  login(credentials: any): Promise<AxiosResponse> {
+    return ApiService.post("login", credentials);
+  },
+  validateUser(token: string) {
+    return ApiService.validateToken("user", token);
+  },
+};
+
+export default ApiAuth;
+

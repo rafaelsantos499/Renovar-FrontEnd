@@ -42,7 +42,7 @@
 
           <!--begin::Link-->
           <router-link to="/password-reset" class="link-primary fs-6 fw-bolder">
-            Forgot Password ?
+            Perdeu sua senha ?
           </router-link>
           <!--end::Link-->
         </div>
@@ -84,7 +84,6 @@
         </button>
         <!--end::Submit button-->
 
-        <!--begin::Separator-->
       </div>
       <!--end::Actions-->
     </Form>
@@ -133,6 +132,7 @@ export default defineComponent({
 
       // Dummy delay
 
+
       // Send login request
       store
         .dispatch(Actions.LOGIN, values)
@@ -160,6 +160,7 @@ export default defineComponent({
             customClass: {
               confirmButton: "btn fw-bold btn-light-danger",
             },
+
           });
         });
 

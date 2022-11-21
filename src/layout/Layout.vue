@@ -43,7 +43,6 @@
   <!-- end:: Body -->
   <KTScrollTop></KTScrollTop>
   <KTExplore></KTExplore>
-  <KTDrawerMessenger></KTDrawerMessenger>
   <KTUserMenu></KTUserMenu>
   <KTCreateApp></KTCreateApp>
 </template>
@@ -58,11 +57,9 @@ import KTFooter from "@/layout/footer/Footer.vue";
 import HtmlClass from "@/core/services/LayoutService";
 import KTToolbar from "@/layout/toolbar/Toolbar.vue";
 import KTScrollTop from "@/layout/extras/ScrollTop.vue";
-import KTUserMenu from "@/layout/header/partials/ActivityDrawer.vue";
 import KTLoader from "@/components/Loader.vue";
 import KTCreateApp from "@/components/modals/wizards/CreateAppModal.vue";
 import KTExplore from "@/layout/extras/Explore.vue";
-import KTDrawerMessenger from "@/layout/extras/DrawerMessenger.vue";
 import { Actions } from "@/store/enums/StoreEnums";
 import {
   MenuComponent,
@@ -90,9 +87,7 @@ export default defineComponent({
     KTToolbar,
     KTScrollTop,
     KTCreateApp,
-    KTUserMenu,
     KTExplore,
-    KTDrawerMessenger,
     KTLoader,
   },
   setup() {
