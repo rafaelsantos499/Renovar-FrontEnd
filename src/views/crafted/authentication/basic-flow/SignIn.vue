@@ -84,7 +84,6 @@
         </button>
         <!--end::Submit button-->
 
-        <!--end::Google link-->
       </div>
       <!--end::Actions-->
     </Form>
@@ -132,28 +131,41 @@ export default defineComponent({
       }
 
       // Dummy delay
-      setTimeout(() => {
-        // Send login request
-        store
-          .dispatch(Actions.LOGIN, values)
-          .then(() => {
-            router.push({ name: "dashboard" });
-          })
-          .catch(() => {
-            Swal.fire({
-              text: store.getters.getErrors,
-              icon: "error",
-              buttonsStyling: false,
-              confirmButtonText: "Tentar Novamente!",
-              customClass: {
-                confirmButton: "btn fw-bold btn-light-danger",
-              },
-            });
-          });
 
-        //Deactivate indicator
-        submitButton.value?.removeAttribute("data-kt-indicator");
-      }, 2000);
+
+      // Send login request
+      store
+        .dispatch(Actions.LOGIN, values)
+        .then((r) => {
+          // const name = r.data.usuario.name;
+          Swal.fire({
+            text: `Seja Bem vindo.`,
+            icon: "success",
+            buttonsStyling: false,
+            confirmButtonText: "Ok, Vamos Começar!",
+            customClass: {
+              confirmButton: "btn fw-bold btn-light-primary",
+            },
+          }).then(() => {
+            router.push({ name: "dashboard" });
+          });
+        })
+
+        .catch(() => {
+          Swal.fire({
+            text: store.getters.getErrors,
+            icon: "error",
+            buttonsStyling: false,
+            confirmButtonText: "Tente Novamente!",
+            customClass: {
+              confirmButton: "btn fw-bold btn-light-danger",
+            },
+
+          });
+        });
+
+      //Deactivate indicator
+      submitButton.value?.removeAttribute("data-kt-indicator");
     };
 
     return {

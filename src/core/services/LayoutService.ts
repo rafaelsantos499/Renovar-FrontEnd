@@ -31,7 +31,11 @@ class LayoutService {
 
     store.dispatch(Actions.ADD_BODY_ATTRIBUTE, {
       qulifiedName: "style",
+
+
+
       value: "background-image: url(media/patterns/header-bg-sola.png)",
+
     });
   }
 
