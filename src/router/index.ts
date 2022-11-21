@@ -1,12 +1,14 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import store from "@/store";
 import { Mutations, Actions } from "@/store/enums/StoreEnums";
+import GUARD from "@/router/Middleware";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     redirect: "/dashboard",
     component: () => import("@/layout/Layout.vue"),
+    beforeEnter: GUARD.redirecionarUsuarioNaoAutenticado,
     children: [
       {
         path: "/dashboard",
@@ -220,6 +222,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "sign-in",
         component: () =>
           import("@/views/crafted/authentication/basic-flow/SignIn.vue"),
+        beforeEnter: GUARD.redirecionarUsuarioLogado,
       },
       {
         path: "/sign-up",
