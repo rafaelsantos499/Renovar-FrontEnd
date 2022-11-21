@@ -19,22 +19,20 @@ const axiosIstance = axios.create({
 //   }
 // );
 
-export const api = {
+const ApiServicee = {
   post(resource: string, params: AxiosResponse) {
     return axiosIstance.post(resource, params);
   },
   get(resource: string, params: any) {
     return axiosIstance.post(resource, params);
   },
-  login(body) {
-    return axios.post(
-      "https://dogsapi.origamid.dev/json/jwt-auth/v1/token",
-      body
-    );
-  },
-  validateToken() {
-    return axiosIstance.post(
-      "https://dogsapi.origamid.dev/json/jwt-auth/v1/token/validate"
-    );
+  validateToken(resource: string, token: string) {
+    return axiosIstance.get(resource, {
+      headers: {
+        Authorization: "Bearer" + token,
+      },
+    });
   },
 };
+
+export default ApiServicee;
