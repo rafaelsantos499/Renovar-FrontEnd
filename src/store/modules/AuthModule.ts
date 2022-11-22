@@ -82,7 +82,7 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
   [Actions.LOGIN](credentials) {
     return new Promise<void>((resolve, reject) => {
       ApiAuth.login(credentials).then(({ data }) => {
-        console.log(data);
+        console.log(data.data.token);
         if (data.error) {
           this.context.commit(Mutations.SET_ERROR, data.message);
           reject();
@@ -134,7 +134,7 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
   @Action
   [Actions.VERIFY_AUTH]() {
     return new Promise<void>((resolve, reject) => {
-      return ApiAuth.validateUser(JwtService.getToken())
+      ApiAuth.validateUser(JwtService.getToken())
         .then(({ data }) => {
           resolve();
           this.context.commit(Mutations.SET_AUTH, data.data.usuario);

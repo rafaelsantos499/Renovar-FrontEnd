@@ -66,7 +66,7 @@
               <th class="min-w-70px">Localidade</th>
               <th class="min-w-140px">Telefone</th>
               <th class="min-w-50px text-center">Pedidos</th>
-              <th class="min-w-100px text-end">Actions</th>
+              <th class="min-w-100px text-end">Ação</th>
             </tr>
           </thead>
           <!--end::Table head-->
@@ -81,11 +81,9 @@
                       <img :src="item.image" alt="" />
                     </div> -->
                     <div class="d-flex justify-content-start flex-column">
-                      <a
-                        href="#"
-                        class="text-dark fw-bolder text-hover-primary fs-6"
-                        >{{ item.nome }}</a
-                      >
+                      <div class="text-dark fw-bolder fs-6">
+                        {{ item.nome }}
+                      </div>
 
                       <span
                         class="text-muted fw-bold text-muted d-block fs-7"
@@ -100,11 +98,9 @@
                       <img :src="item.image" alt="" />
                     </div> -->
                     <div class="d-flex justify-content-start flex-column">
-                      <a
-                        href="#"
-                        class="text-dark fw-bolder text-hover-primary fs-6"
-                        >{{ item.estado }}</a
-                      >
+                      <div class="text-dark fw-bolder fs-6">
+                        {{ item.estado }}
+                      </div>
 
                       <span class="text-muted fw-bold text-muted d-block fs-7"
                         >MG</span
@@ -114,70 +110,33 @@
                 </td>
 
                 <td>
-                  <a
-                    href="#"
-                    class="text-dark fw-bolder text-hover-primary d-block fs-6"
-                    >{{ item.telefone }}</a
-                  >
+                  <div href="#" class="text-dark fw-bolder d-block fs-6">
+                    {{ item.telefone }}
+                  </div>
                   <span class="text-muted fw-bold text-muted d-block fs-7">{{
                     item.companySkills
                   }}</span>
                 </td>
 
                 <td>
-                  <a
-                    href="#"
-                    class="
-                      text-dark
-                      fw-bolder
-                      text-hover-primary
-                      d-block
-                      fs-6
-                      text-center
-                    "
-                    >{{ item.pedidos.length }}</a
-                  >
+                  <p class="text-dark fw-bolder d-block fs-6 text-center">
+                    {{ item.pedidos.length }}
+                  </p>
                 </td>
 
                 <td class="text-end">
-                  <a
-                    href="#"
+                  <router-link
+                    :to="{
+                      name: 'cliente',
+                      params: { nome: item.nome, id: item.id },
+                    }"
                     class="
-                      btn btn-icon btn-bg-light btn-active-color-primary btn-sm
+                      btn btn-bg-light btn-active-color-primary btn-sm
                       me-1
                     "
                   >
-                    <span class="svg-icon svg-icon-3">
-                      <inline-svg
-                        src="media/icons/duotune/general/gen019.svg"
-                      />
-                    </span>
-                  </a>
-
-                  <a
-                    href="#"
-                    class="
-                      btn btn-icon btn-bg-light btn-active-color-primary btn-sm
-                      me-1
-                    "
-                  >
-                    <span class="svg-icon svg-icon-3">
-                      <inline-svg src="media/icons/duotune/art/art005.svg" />
-                    </span>
-                  </a>
-
-                  <a
-                    href="#"
-                    class="
-                      btn btn-icon btn-bg-light btn-active-color-primary btn-sm
-                    "
-                  >
-                    <span class="svg-icon svg-icon-3">
-                      <inline-svg
-                        src="media/icons/duotune/general/gen027.svg"
-                      />
-                    </span>
-                  </a>
+                    Ver mais
+                  </router-link>
                 </td>
               </tr>
             </template>
@@ -196,6 +155,8 @@
 <script lang="ts">
 import JwtService from "@/core/services/JwtService";
 import ApiServicee from "@/services/ApiServicee";
+import ApiCliente from "@/services/Cliente/ApiCliente";
+
 import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
@@ -210,16 +171,10 @@ export default defineComponent({
     const inputSearch = ref();
 
     onMounted(() => {
-      ApiServicee.get("clientes", {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }).then(({ data }) => {
+      ApiCliente.clientesGet().then(({ data }) => {
         todosClientes.value = data.data.clientes;
       });
     });
-
-    
 
     // todosClientes.value = [
     //   {
@@ -270,48 +225,9 @@ export default defineComponent({
     // ];
 
     return {
-      search,
       todosClientes,
       inputSearch,
     };
   },
 });
 </script>
-<style>
-.active-pink-2 input.form-control[type="text"]:focus:not([readonly]) {
-  border-bottom: 1px solid #f48fb1;
-  box-shadow: 0 1px 0 0 #f48fb1;
-}
-.active-pink input.form-control[type="text"] {
-  border-bottom: 1px solid #f48fb1;
-  box-shadow: 0 1px 0 0 #f48fb1;
-}
-.active-purple-2 input.form-control[type="text"]:focus:not([readonly]) {
-  border-bottom: 1px solid #ce93d8;
-  box-shadow: 0 1px 0 0 #ce93d8;
-}
-.active-purple input.form-control[type="text"] {
-  border-bottom: 1px solid #ce93d8;
-  box-shadow: 0 1px 0 0 #ce93d8;
-}
-.active-cyan-2 input.form-control[type="text"]:focus:not([readonly]) {
-  border-bottom: 1px solid #4dd0e1;
-  box-shadow: 0 1px 0 0 #4dd0e1;
-}
-.active-cyan input.form-control[type="text"] {
-  border-bottom: 1px solid #4dd0e1;
-  box-shadow: 0 1px 0 0 #4dd0e1;
-}
-.active-cyan .fa,
-.active-cyan-2 .fa {
-  color: #4dd0e1;
-}
-.active-purple .fa,
-.active-purple-2 .fa {
-  color: #ce93d8;
-}
-.active-pink .fa,
-.active-pink-2 .fa {
-  color: #f48fb1;
-}
-</style>

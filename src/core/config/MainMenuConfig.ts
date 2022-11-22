@@ -21,7 +21,7 @@ const DocMenuConfig = [
     pages: [
       {
         heading: "Clientes",
-        route: "/cliente",
+        route: "/clientes",
         svgIcon: "media/icons/duotune/general/gen022.svg",
         fontIcon: "bi-archive",
       },
