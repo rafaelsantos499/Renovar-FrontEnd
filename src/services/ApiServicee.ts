@@ -24,7 +24,7 @@ const ApiServicee = {
     return axiosIstance.post(resource, params);
   },
   get(resource: string, params: any) {
-    return axiosIstance.post(resource, params);
+    return axiosIstance.get(resource, params);
   },
   validateToken(resource: string, token: string) {
     return axiosIstance.get(resource, {

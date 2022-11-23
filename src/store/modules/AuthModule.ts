@@ -1,7 +1,7 @@
 import ApiService from "@/core/services/ApiService";
 import ApiServicee from "@/services/ApiServicee";
 import JwtService from "@/core/services/JwtService";
-import { ApiAuth } from "@/services/ApiAuth";
+import ApiAuth from "@/services/ApiAuth";
 import { Api } from "@/services/ApiServiceAxios";
 import { Actions, Mutations } from "@/store/enums/StoreEnums";
 import { Module, Action, Mutation, VuexModule } from "vuex-module-decorators";
@@ -12,14 +12,11 @@ import router from "@/router";
 export interface User {
   token: string;
   usuario: UserData;
-
-import ApiAuth from "@/services/ApiAuth";
-import type { UserData } from "@/models/User";
+}
 
 export interface User {
   token: string;
   user: UserData;
-
 }
 
 export interface UserAuthInfo {
@@ -63,8 +60,6 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
     this.errors = error;
   }
 
-
-
   [Mutations.SET_AUTH](user: UserData) {
     // console.log(user);
     this.isAuthenticated = true;
@@ -94,10 +89,6 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
   [Actions.LOGIN](credentials) {
     return new Promise<void>((resolve, reject) => {
       ApiAuth.login(credentials).then(({ data }) => {
-
-
-
-
         if (data.error) {
           this.context.commit(Mutations.SET_ERROR, data.message);
           reject();
@@ -151,13 +142,12 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
   [Actions.VERIFY_AUTH]() {
     const token = JwtService.getToken();
     return new Promise<void>((resolve, reject) => {
-      ApiAuth.validateToken(token)
+      ApiAuth.validateUser(JwtService.getToken())
         .then(({ data }) => {
           this.context.commit(Mutations.SET_AUTH, data.data.usuario);
           resolve();
         })
-        .catch(() => reject());  
-
+        .catch(() => reject());
     });
   }
 

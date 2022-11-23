@@ -1,9 +1,7 @@
 import { Actions } from "@/store/enums/StoreEnums";
 import JwtService from "@/core/services/JwtService";
-import { ApiAuth } from "@/services/ApiAuth";
 import store from "@/store";
 import router from ".";
-import { Mutation } from "vuex-module-decorators";
 
 export default {
   redirecionarUsuarioLogado(to, from) {
