@@ -137,6 +137,22 @@ export default defineComponent({
         store
           .dispatch(Actions.LOGIN, values)
           .then(() => {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: "top-end",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 1500,
+              didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+              },
+            });
+
+            Toast.fire({
+              icon: "success",
+              title: "Seja Bem vindo .",
+            });
             router.push({ name: "dashboard" });
           })
           .catch(() => {

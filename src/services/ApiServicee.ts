@@ -20,7 +20,10 @@ const axiosIstance = axios.create({
 // );
 
 const ApiServicee = {
-  post(resource: string, params: AxiosResponse) {
+  post(resource: string, params: any, body: any = null) {
+    return axiosIstance.post(resource, body, params);
+  },
+  postLogin(resource: string, params: any) {
     return axiosIstance.post(resource, params);
   },
   get(resource: string, params: any) {

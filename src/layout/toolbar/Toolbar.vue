@@ -50,26 +50,15 @@
         <!--begin::Wrapper-->
         <div class="me-4">
           <!--begin::Menu-->
-          <a
-            href="#"
-            class="
-              btn
-              btn-custom
-              btn-active-white
-              btn-flex
-              btn-color-white
-              btn-active-color-primary
-              fw-bolder
-            "
-            data-kt-menu-trigger="click"
-            data-kt-menu-placement="bottom-end"
-            data-kt-menu-flip="top-end"
+          <router-link
+            class="btn btn-sm btn-light-danger"
+            :to="{ name: 'novoCliente' }"
           >
-            <span class="svg-icon svg-icon-5 svg-icon-gray-500 me-1">
-              <inline-svg src="media/icons/duotune/general/gen031.svg" />
+            <span class="svg-icon svg-icon-3">
+              <inline-svg src="media/icons/duotune/arrows/arr075.svg" />
             </span>
-            Filter
-          </a>
+            Pedido
+          </router-link>
 
           <Dropdown1></Dropdown1>
           <!--end::Menu-->
@@ -77,15 +66,15 @@
         <!--end::Wrapper-->
 
         <!--begin::Button-->
-        <a
-          href="#"
-          class="btn btn-bg-white btn-active-color-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#kt_modal_create_app"
-          id="kt_toolbar_primary_button"
+        <router-link
+          class="btn btn-sm btn-light-primary"
+          :to="{ name: 'novoCliente' }"
         >
-          Create
-        </a>
+          <span class="svg-icon svg-icon-3">
+            <inline-svg src="media/icons/duotune/arrows/arr075.svg" />
+          </span>
+          Cliente
+        </router-link>
         <!--end::Button-->
       </div>
       <!--end::Actions-->

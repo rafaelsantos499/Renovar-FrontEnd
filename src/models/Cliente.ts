@@ -12,3 +12,11 @@ export interface Cliente {
   updated_at: string;
   user_id: number;
 }
+
+export interface NewCliente {
+  nome: string;
+  email: string;
+  telefone: string;
+  cidade: string;
+  estado: string;
+}
