@@ -1,18 +1,10 @@
 import ApiService from "@/core/services/ApiService";
 import ApiServicee from "@/services/ApiServicee";
 import JwtService from "@/core/services/JwtService";
-import ApiAuth from "@/services/ApiAuth";
-import { Api } from "@/services/ApiServiceAxios";
 import { Actions, Mutations } from "@/store/enums/StoreEnums";
 import { Module, Action, Mutation, VuexModule } from "vuex-module-decorators";
-
-import { UserData } from "@/models/User";
-import router from "@/router";
-
-export interface User {
-  token: string;
-  usuario: UserData;
-}
+import ApiAuth from "@/services/ApiAuth";
+import type { UserData } from "@/models/User";
 
 export interface User {
   token: string;
@@ -60,6 +52,7 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
     this.errors = error;
   }
 
+  @Mutation
   [Mutations.SET_AUTH](user: UserData) {
     // console.log(user);
     this.isAuthenticated = true;
@@ -89,6 +82,7 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
   [Actions.LOGIN](credentials) {
     return new Promise<void>((resolve, reject) => {
       ApiAuth.login(credentials).then(({ data }) => {
+        console.log(data.data.token);
         if (data.error) {
           this.context.commit(Mutations.SET_ERROR, data.message);
           reject();
@@ -112,7 +106,6 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
       ApiService.post("registration", credentials)
         .then(({ data }) => {
           this.context.commit(Mutations.SET_AUTH, data);
-
           resolve();
         })
         .catch(({ response }) => {
@@ -140,14 +133,15 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
 
   @Action
   [Actions.VERIFY_AUTH]() {
-    const token = JwtService.getToken();
     return new Promise<void>((resolve, reject) => {
       ApiAuth.validateUser(JwtService.getToken())
         .then(({ data }) => {
-          this.context.commit(Mutations.SET_AUTH, data.data.usuario);
           resolve();
+          this.context.commit(Mutations.SET_AUTH, data.data.usuario);
         })
-        .catch(() => reject());
+        .catch(() => {
+          reject();
+        });
     });
   }
 
