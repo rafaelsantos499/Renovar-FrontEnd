@@ -156,12 +156,15 @@
 import JwtService from "@/core/services/JwtService";
 import ApiServicee from "@/services/ApiServicee";
 import ApiCliente from "@/services/Cliente/ApiCliente";
+import KTLoader from "@/components/Loader.vue";
 
 import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
-  name: "kt-widget-9",
-  components: {},
+  name: "clientes",
+  components: {
+    KTLoader,
+  },
   props: {
     widgetClasses: String,
   },
