@@ -8,96 +8,91 @@
           >
         </h3>
       </div>
-      <div class="card-body">
-        {{ newCliente }}
-        <Form
-          class="form"
-          @submit="submit"
-          :validation-schema="validationSchema"
-        >
-          <div class="row">
-            <div class="col-sm-4 mt-3">
-              <label class="fs-5 fw-bold mb-2 required">Nome</label>
-              <Field
-                type="text"
-                class="form-control form-control-solid"
-                v-model="newCliente.nome"
-                name="nome"
-              />
-              <div class="fv-plugins-message-container">
-                <div class="fv-help-block">
-                  <ErrorMessage name="nome" />
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4 mt-3">
-              <label class="fs-5 fw-bold mb-2 required">Email</label>
-              <Field
-                type="text"
-                class="form-control form-control-solid"
-                v-model="newCliente.email"
-                name="email"
-              />
-              <div class="fv-plugins-message-container">
-                <div class="fv-help-block">
-                  <ErrorMessage name="email" />
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4 mt-3">
-              <label class="fs-5 fw-bold mb-2 required">Telefone</label>
-              <Field
-                type="text"
-                class="form-control form-control-solid"
-                v-model="newCliente.telefone"
-                name="telefone"
-              />
-              <div class="fv-plugins-message-container">
-                <div class="fv-help-block">
-                  <ErrorMessage name="telefone" />
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3 mt-3">
-              <label class="fs-5 fw-bold mb-2 required">cidade</label>
-              <Field
-                type="text"
-                class="form-control form-control-solid"
-                v-model="newCliente.cidade"
-                name="cidade"
-              />
-              <div class="fv-plugins-message-container">
-                <div class="fv-help-block">
-                  <ErrorMessage name="cidade" />
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-2 mt-3">
-              <label class="fs-5 fw-bold mb-2 required">Estado</label>
-              <Field
-                type="text"
-                class="form-control form-control-solid"
-                v-model="newCliente.estado"
-                name="estado"
-              />
-              <div class="fv-plugins-message-container">
-                <div class="fv-help-block">
-                  <ErrorMessage name="estado" />
-                </div>
+    </div>
+    <div class="card-body">
+      <Form class="form" @submit="submit" :validation-schema="validationSchema">
+        <div class="row">
+          <div class="col-sm-4 mt-3">
+            <label class="fs-5 fw-bold mb-2 required">Nome</label>
+            <Field
+              type="text"
+              class="form-control form-control-solid"
+              v-model="newCliente.nome"
+              name="nome"
+            />
+            <div class="fv-plugins-message-container">
+              <div class="fv-help-block">
+                <ErrorMessage name="nome" />
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary mt-10">
-            <span class="indicator-label"> Cadastrar </span>
-            <span class="indicator-progress">
-              Please wait...
-              <span
-                class="spinner-border spinner-border-sm align-middle ms-2"
-              ></span>
-            </span>
-          </button>
-        </Form>
-      </div>
+          <div class="col-sm-4 mt-3">
+            <label class="fs-5 fw-bold mb-2 required">Email</label>
+            <Field
+              type="text"
+              class="form-control form-control-solid"
+              v-model="newCliente.email"
+              name="email"
+            />
+            <div class="fv-plugins-message-container">
+              <div class="fv-help-block">
+                <ErrorMessage name="email" />
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 mt-3">
+            <label class="fs-5 fw-bold mb-2 required">Telefone</label>
+            <Field
+              type="text"
+              class="form-control form-control-solid"
+              v-model="newCliente.telefone"
+              name="telefone"
+            />
+            <div class="fv-plugins-message-container">
+              <div class="fv-help-block">
+                <ErrorMessage name="telefone" />
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 mt-3">
+            <label class="fs-5 fw-bold mb-2 required">cidade</label>
+            <Field
+              type="text"
+              class="form-control form-control-solid"
+              v-model="newCliente.cidade"
+              name="cidade"
+            />
+            <div class="fv-plugins-message-container">
+              <div class="fv-help-block">
+                <ErrorMessage name="cidade" />
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2 mt-3">
+            <label class="fs-5 fw-bold mb-2 required">Estado</label>
+            <Field
+              type="text"
+              class="form-control form-control-solid"
+              v-model="newCliente.estado"
+              name="estado"
+            />
+            <div class="fv-plugins-message-container">
+              <div class="fv-help-block">
+                <ErrorMessage name="estado" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-10">
+          <span class="indicator-label"> Cadastrar </span>
+          <span class="indicator-progress">
+            Please wait...
+            <span
+              class="spinner-border spinner-border-sm align-middle ms-2"
+            ></span>
+          </span>
+        </button>
+      </Form>
     </div>
   </div>
 </template>
@@ -108,6 +103,9 @@ import * as Yup from "yup";
 import { NewCliente } from "@/models/Cliente";
 import ApiCliente from "@/services/Cliente/ApiCliente";
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
+import store from "@/store";
+import { Mutations } from "@/store/enums/StoreEnums";
+import router from "@/router";
 
 export default {
   components: {
@@ -141,6 +139,7 @@ export default {
 
     const submit = () => {
       ApiCliente.newCliente(newCliente.value).then(({ data }) => {
+        console.log(data);
         if (!data.error) {
           const Toast = Swal.mixin({
             toast: true,
@@ -158,8 +157,21 @@ export default {
             icon: "success",
             title: "Cliente cadastrado com sucesso",
           });
+
+          router.push({ name: "clientes" });
+
           return;
         }
+
+        Swal.fire({
+          text: data.message,
+          icon: "error",
+          buttonsStyling: false,
+          confirmButtonText: "Tentar Novamente!",
+          customClass: {
+            confirmButton: "btn fw-bold btn-light-danger",
+          },
+        });
       });
     };
     return {

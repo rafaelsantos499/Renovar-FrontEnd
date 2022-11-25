@@ -181,7 +181,7 @@ export default defineComponent({
 
     onMounted(() => {
       ApiCliente.clientesGet().then(({ data }) => {
-        todosClientes.value = data.data.clientes.reverse();
+        todosClientes.value = data.data.clientes;
       });
     });
 
