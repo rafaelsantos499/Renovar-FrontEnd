@@ -79,6 +79,15 @@
             />
           </div>
         </div>
+        <button type="submit" class="btn btn-primary mt-10">
+          <span class="indicator-label"> Atualizar dados </span>
+          <span class="indicator-progress">
+            Please wait...
+            <span
+              class="spinner-border spinner-border-sm align-middle ms-2"
+            ></span>
+          </span>
+        </button>
       </Form>
     </div>
   </div>
