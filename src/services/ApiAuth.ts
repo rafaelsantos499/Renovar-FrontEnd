@@ -3,7 +3,7 @@ import { AxiosResponse } from "axios";
 
 const ApiAuth = {
   login(credentials: any): Promise<AxiosResponse> {
-    return ApiService.post("login", credentials);
+    return ApiService.postLogin("login", credentials);
   },
   validateUser(token: string) {
     return ApiService.validateToken("user", token);

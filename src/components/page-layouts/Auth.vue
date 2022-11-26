@@ -7,7 +7,7 @@
       position-x-center
       bgi-no-repeat bgi-size-contain bgi-attachment-fixed
     "
-    style="background-image: url('media/illustrations/sketchy-1/14.png')"
+    style="background-image: url('')"
   >
     <!--begin::Content-->
     <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">

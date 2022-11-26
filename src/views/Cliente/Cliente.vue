@@ -14,12 +14,7 @@
       </div>
     </div>
     <div class="card-body py-3 pb-10">
-      <Form
-        class="form"
-        id="kt_modal_new_address_form"
-        @submit="submit"
-        :validation-schema="validationSchema"
-      >
+      <Form class="form" @submit="submit" :validation-schema="validationSchema">
         <div class="row">
           <div class="col-sm-6">
             <label class="fs-5 fw-bold mb-2">Nome</label>
@@ -204,12 +199,11 @@ export default {
       postCode: Yup.string().required().label("Post code"),
     });
 
-    console.log(router.currentRoute.value);
     onMounted(() => {
       ApiCliente.clientesGet(clienteId).then(({ data }) => {
         dataCliente.value = data.data.cliente;
         pedidos.value = data.data.cliente.pedidos;
-        console.log(pedidos.value);
+        // console.log(pedidos.value);
       });
     });
 

@@ -1,6 +1,13 @@
 <template>
   <!--begin::Tables Widget 9-->
   <div class="card" :class="widgetClasses">
+    <!-- <span class="pt-3 ps-3"
+      ><router-link :to="{ name: 'clientes' }">clientes</router-link
+      >-><router-link :to="{ name: 'clientes' }">{{
+        clienteNome
+      }}</router-link></span
+    > -->
+
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
@@ -17,7 +24,6 @@
             aria-describedby="search-addon"
             style="height: 40px"
             v-model="inputSearch"
-            @keyup="search"
           />
           <span class="input-group-text border-0" id="search-addon">
             <i class="fas fa-search"></i>
@@ -31,17 +37,15 @@
         data-bs-trigger="hover"
         title="Click to add a user"
       >
-        <a
-          href="#"
+        <router-link
           class="btn btn-sm btn-light-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#kt_modal_invite_friends"
+          :to="{ name: 'novoCliente' }"
         >
           <span class="svg-icon svg-icon-3">
             <inline-svg src="media/icons/duotune/arrows/arr075.svg" />
           </span>
           Novo Cliente
-        </a>
+        </router-link>
       </div>
     </div>
     <!--end::Header-->
@@ -154,11 +158,13 @@
 
 <script lang="ts">
 import JwtService from "@/core/services/JwtService";
+import router from "@/router";
 import ApiServicee from "@/services/ApiServicee";
 import ApiCliente from "@/services/Cliente/ApiCliente";
 import KTLoader from "@/components/Loader.vue";
 
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onMounted, reactive, ref } from "vue";
+import MapaRouter from "@/components/MapaRouter.vue";
 
 export default defineComponent({
   name: "clientes",
@@ -172,60 +178,13 @@ export default defineComponent({
     const token = JwtService.getToken();
     const todosClientes = ref();
     const inputSearch = ref();
+    const clienteNome: any = router.currentRoute.value;
 
     onMounted(() => {
       ApiCliente.clientesGet().then(({ data }) => {
         todosClientes.value = data.data.clientes;
       });
     });
-
-    // todosClientes.value = [
-    //   {
-    //     image: "media/avatars/150-11.jpg",
-    //     name: "Ana Simmons",
-    //     skills: "HTML, JS, ReactJS",
-    //     companyName: "Intertico",
-    //     companySkills: "Web, UI/UX Design",
-    //     value: "50",
-    //     color: "primary",
-    //   },
-    //   {
-    //     image: "media/avatars/150-3.jpg",
-    //     name: "Jessie Clarcson",
-    //     skills: "C#, ASP.NET, MS SQL",
-    //     companyName: "Agoda",
-    //     companySkills: "Houses & Hotels",
-    //     value: "70",
-    //     color: "danger",
-    //   },
-    //   {
-    //     image: "media/avatars/150-4.jpg",
-    //     name: "Lebron Wayde",
-    //     skills: "PHP, Laravel, VueJS",
-    //     companyName: "RoadGee",
-    //     companySkills: "Transportation",
-    //     value: "60",
-    //     color: "success",
-    //   },
-    //   {
-    //     image: "media/avatars/150-5.jpg",
-    //     name: "Natali Goodwin",
-    //     skills: "Python, PostgreSQL, ReactJS",
-    //     companyName: "The Hill",
-    //     companySkills: "Insurance",
-    //     value: "50",
-    //     color: "warning",
-    //   },
-    //   {
-    //     image: "media/avatars/150-6.jpg",
-    //     name: "Kevin Leonard",
-    //     skills: "HTML, JS, ReactJS",
-    //     companyName: "RoadGee",
-    //     companySkills: "Art Director",
-    //     value: "90",
-    //     color: "info",
-    //   },
-    // ];
 
     return {
       todosClientes,
