@@ -104,7 +104,6 @@ import { NewCliente } from "@/models/Cliente";
 import ApiCliente from "@/services/Cliente/ApiCliente";
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import store from "@/store";
-import { Mutations } from "@/store/enums/StoreEnums";
 import router from "@/router";
 
 export default {

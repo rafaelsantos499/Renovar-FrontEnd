@@ -22,7 +22,6 @@
             <Field
               type="text"
               class="form-control form-control-solid"
-              :placeholder="dataCliente?.nome"
               v-model="vModelUser.nome"
               name="firstName"
             />
@@ -33,7 +32,6 @@
             <Field
               type="text"
               class="form-control form-control-solid"
-              :placeholder="dataCliente?.telefone"
               v-model="vModelUser.telefone"
               name="telefone"
             />
@@ -43,7 +41,6 @@
             <Field
               type="text"
               class="form-control form-control-solid"
-              :placeholder="dataCliente?.email"
               v-model="vModelUser.email"
               name="email"
             />
@@ -53,7 +50,6 @@
             <Field
               type="text"
               class="form-control form-control-solid"
-              :placeholder="dataCliente?.estado"
               v-model="vModelUser.estado"
               name="estado"
             />
@@ -63,7 +59,6 @@
             <Field
               type="text"
               class="form-control form-control-solid"
-              :placeholder="dataCliente?.cidade"
               v-model="vModelUser.cidade"
               name="cidade"
             />
@@ -71,18 +66,20 @@
           <div class="col-sm-4 mt-3">
             <label class="fs-5 fw-bold mb-2">Data do cadastro</label>
             <Field
+              disabled
               type="text"
               class="form-control form-control-solid"
-              :placeholder="dataCliente?.created_at"
               v-model="vModelUser.dataDoCadastro"
               name="dataCadastro"
             />
           </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-10">
-          <span class="indicator-label"> Atualizar dados </span>
-          <span class="indicator-progress">
-            Please wait...
+        <button @click="submit" class="btn btn-primary mt-10">
+          <span v-if="submitButton" class="indicator-label">
+            Atualizar dados
+          </span>
+          <span v-else class="indicator-label">
+            Atualizando...
             <span
               class="spinner-border spinner-border-sm align-middle ms-2"
             ></span>
@@ -99,7 +96,8 @@
         </h3>
       </div>
     </div>
-    <div class="card-body py-3 pb-10 pt-5">
+
+    <div v-if="pedidos" class="card-body py-3 pb-10 pt-5">
       <div class="card-body py-3">
         <!--begin::Table container-->
         <div class="table-responsive">
@@ -119,6 +117,7 @@
                 <th class="min-w-50px text-center">Preço do Pedido</th>
                 <th class="min-w-50px text-center">Quantidade de INV</th>
                 <th class="min-w-50px text-center">Vendendor</th>
+                <th class="min-w-100px text-end">Açoes</th>
               </tr>
             </thead>
             <!--end::Table head-->
@@ -155,6 +154,63 @@
                       {{ item.vendedor }}
                     </p>
                   </td>
+                  <td class="text-end">
+                    <router-link
+                      :to="{
+                        name: 'pedido',
+                        params: {
+                          id_cliente: item.cliente_id,
+                          id_pedido: item.id,
+                        },
+                      }"
+                      class="
+                        btn
+                        btn-icon
+                        btn-bg-light
+                        btn-active-color-primary
+                        btn-sm
+                        me-1
+                      "
+                    >
+                      <span class="svg-icon svg-icon-3">
+                        <inline-svg
+                          src="media/icons/duotune/general/gen019.svg"
+                        /> </span
+                    ></router-link>
+
+                    <a
+                      href="#"
+                      class="
+                        btn
+                        btn-icon
+                        btn-bg-light
+                        btn-active-color-primary
+                        btn-sm
+                        me-1
+                      "
+                    >
+                      <span class="svg-icon svg-icon-3">
+                        <inline-svg src="media/icons/duotune/art/art005.svg" />
+                      </span>
+                    </a>
+
+                    <a
+                      href="#"
+                      class="
+                        btn
+                        btn-icon
+                        btn-bg-light
+                        btn-active-color-primary
+                        btn-sm
+                      "
+                    >
+                      <span class="svg-icon svg-icon-3">
+                        <inline-svg
+                          src="media/icons/duotune/general/gen027.svg"
+                        />
+                      </span>
+                    </a>
+                  </td>
                 </tr>
               </template>
             </tbody>
@@ -163,6 +219,12 @@
           <!--end::Table-->
         </div>
         <!--end::Table container-->
+      </div>
+    </div>
+
+    <div v-else>
+      <div class="fw-bolder text-muted text-center my-10">
+        Esse cliente não tem Pedido.
       </div>
     </div>
   </div>
@@ -176,6 +238,7 @@ import { useRouter } from "vue-router";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import * as Yup from "yup";
 import { Pedido } from "@/models/Pedido";
+import Swal from "sweetalert2/dist/sweetalert2.min.js";
 
 export default {
   components: {
@@ -187,14 +250,25 @@ export default {
     const clienteId: any = router.currentRoute.value.params.id;
     const clienteNome: any = router.currentRoute.value.params.nome;
     const dataCliente: Ref<Cliente | null> = ref(null);
-    const pedidos: Ref<Pedido | null> = ref(null);
-    const vModelUser = reactive({
-      nome: dataCliente.value?.nome,
-      email: dataCliente.value?.email,
-      telefone: dataCliente.value?.telefone,
-      estado: dataCliente.value?.estado,
-      cidade: dataCliente.value?.estado,
-      dataDoCadastro: dataCliente.value?.created_at,
+    const pedidos: Ref<any> = ref(null);
+    const submitButton = ref(true);
+
+    interface clienteView {
+      nome: string;
+      email: string;
+      telefone: string;
+      estado: string;
+      cidade: string;
+      dataDoCadastro: string;
+    }
+
+    const vModelUser: clienteView = reactive({
+      nome: "",
+      email: "",
+      telefone: "",
+      estado: "",
+      cidade: "",
+      dataDoCadastro: "",
     });
 
     const validationSchema = Yup.object().shape({
@@ -210,18 +284,61 @@ export default {
 
     onMounted(() => {
       ApiCliente.clientesGet(clienteId).then(({ data }) => {
-        dataCliente.value = data.data.cliente;
-        pedidos.value = data.data.cliente.pedidos;
-        // console.log(pedidos.value);
+        vModelUser.nome = data.data.cliente.nome;
+        vModelUser.email = data.data.cliente.email;
+        vModelUser.cidade = data.data.cliente.cidade;
+        vModelUser.estado = data.data.cliente.estado;
+        vModelUser.telefone = data.data.cliente.telefone;
+        vModelUser.dataDoCadastro = data.data.cliente.created_at;
+
+        if (data.data.cliente.pedidos.length > 0)
+          pedidos.value = data.data.cliente.pedidos;
+        else pedidos.value = null;
       });
     });
 
-    const submit = () => {};
+    const submit = () => {
+      submitButton.value = false;
+      ApiCliente.putCliente(clienteId, vModelUser).then(({ data }) => {
+        if (data.error) {
+          Swal.fire({
+            text: data.message,
+            icon: "error",
+            buttonsStyling: false,
+            confirmButtonText: "Tentar Novamente!",
+            customClass: {
+              confirmButton: "btn fw-bold btn-light-danger",
+            },
+          });
+          return;
+        }
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: "Cliente cadastrado com sucesso",
+        });
+
+        submitButton.value = true;
+      });
+    };
 
     console.log();
     return {
       validationSchema,
       submit,
+      submitButton,
       clienteNome,
       dataCliente,
       vModelUser,
@@ -230,4 +347,8 @@ export default {
   },
 };
 </script>
-<style lang=""></style>
+<style>
+input:disabled {
+  opacity: 1;
+}
+</style>

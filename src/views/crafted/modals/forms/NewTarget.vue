@@ -24,7 +24,7 @@ export default defineComponent({
   },
   setup() {
     onMounted(() => {
-      setCurrentPageBreadcrumbs("New Target", ["Modals", "Forms"]);
+      setCurrentPageBreadcrumbs("teste", ["Modals", "Forms"]);
     });
   },
 });
