@@ -3,10 +3,9 @@
   "version": "8.0.24",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "rtl": "webpack --config webpack-rtl.config.js"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
@@ -69,6 +68,9 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
+    "@vitejs/plugin-vue": "^1.2.1",
+    "vite": "^2.1.5",
+    "vue-tsc": "^0.0.24",
     "prettier": "^2.2.1",
     "sass": "1.32.1",
     "sass-loader": "^8.0.2",
