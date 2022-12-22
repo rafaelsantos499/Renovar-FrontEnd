@@ -11,7 +11,6 @@
           <div class="d-flex flex-center flex-column mb-5">
             <!--begin::Avatar-->
             <div class="symbol symbol-100px symbol-circle mb-7">
-              <img src="media/avatars/150-26.jpg" alt="image" />
             </div>
             <!--end::Avatar-->
 
@@ -222,12 +221,7 @@
             <!--begin::Item-->
             <div class="d-flex flex-stack">
               <div class="d-flex">
-                <img
-                  src="media/svg/brand-logos/google-icon.svg"
-                  class="w-30px me-6"
-                  alt=""
-                />
-
+              
                 <div class="d-flex flex-column">
                   <a
                     href="#"
@@ -280,7 +274,7 @@
             <div class="d-flex flex-stack">
               <div class="d-flex">
                 <img
-                  src="media/svg/brand-logos/github.svg"
+                  src="/public/media/svg/brand-logos/github.svg"
                   class="w-30px me-6"
                   alt=""
                 />
@@ -337,7 +331,7 @@
             <div class="d-flex flex-stack">
               <div class="d-flex">
                 <img
-                  src="media/svg/brand-logos/slack-icon.svg"
+                  src="/public/media/svg/brand-logos/slack-icon.svg"
                   class="w-30px me-6"
                   alt=""
                 />
@@ -458,7 +452,7 @@
           >
             Actions
             <span class="svg-icon svg-icon-2 me-0">
-              <inline-svg src="media/icons/duotune/arrows/arr072.svg" />
+              <inline-svg src="./public/media/icons/duotune/arrows/arr072.svg" />
             </span>
           </a>
           <Dropdown3></Dropdown3>

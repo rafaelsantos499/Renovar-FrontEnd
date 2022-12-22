@@ -31,7 +31,7 @@
           id="kt_header_menu_mobile_toggle"
         >
           <span class="svg-icon svg-icon-2x">
-            <inline-svg src="media/icons/duotune/abstract/abs015.svg" />
+            <inline-svg src="/public/media/icons/duotune/abstract/abs015.svg" />
           </span>
         </div>
       </div>
@@ -42,12 +42,12 @@
         <a href="#">
           <img
             alt="Logo"
-            src="media/logos/Agua-solar-apr.png"
+            src="/public/media/logos/Agua-solar-apr.png"
             class="logo-default h-60px"
           />
           <img
             alt="Logo"
-            src="media/logos/Agua-solar-apr.png"
+            src="/public/media/logos/Agua-solar-apr.png"
             class="logo-sticky h-25px"
           />
         </a>
