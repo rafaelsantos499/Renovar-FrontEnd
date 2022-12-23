@@ -98,7 +98,7 @@
 </template>
 <script lang="ts">
 import { ErrorMessage, Field, Form } from "vee-validate";
-import { reactive, Ref, ref } from "vue";
+import { reactive, Ref, ref,onMounted } from "vue";
 import * as Yup from "yup";
 import { NewCliente } from "@/models/Cliente";
 import ApiCliente from "@/services/Cliente/ApiCliente";
@@ -135,6 +135,7 @@ export default {
       estado: "",
       email: "",
     });
+   
 
     const submit = () => {
       ApiCliente.newCliente(newCliente.value).then(({ data }) => {

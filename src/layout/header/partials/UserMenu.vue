@@ -21,7 +21,6 @@
       <div class="menu-content d-flex align-items-center px-3">
         <!--begin::Avatar-->
         <div class="symbol symbol-50px me-5">
-          <img alt="Logo" src="media/avatars/150-25.jpg" />
         </div>
         <!--end::Avatar-->
 
@@ -210,7 +209,7 @@
             <span class="symbol symbol-20px me-4">
               <img
                 class="rounded-1"
-                src="media/flags/united-states.svg"
+                src="/public/media/flags/united-states.svg"
                 alt="metronic"
               />
             </span>
@@ -230,7 +229,7 @@
             <span class="symbol symbol-20px me-4">
               <img
                 class="rounded-1"
-                src="media/flags/spain.svg"
+                src="/public/media/flags/spain.svg"
                 alt="metronic"
               />
             </span>
@@ -250,7 +249,7 @@
             <span class="symbol symbol-20px me-4">
               <img
                 class="rounded-1"
-                src="media/flags/germany.svg"
+                src="/public/media/flags/germany.svg"
                 alt="metronic"
               />
             </span>
@@ -270,7 +269,7 @@
             <span class="symbol symbol-20px me-4">
               <img
                 class="rounded-1"
-                src="media/flags/japan.svg"
+                src="/public/media/flags/japan.svg"
                 alt="metronic"
               />
             </span>
@@ -290,7 +289,7 @@
             <span class="symbol symbol-20px me-4">
               <img
                 class="rounded-1"
-                src="media/flags/france.svg"
+                src="/public/media/flags/france.svg"
                 alt="metronic"
               />
             </span>
@@ -341,23 +340,23 @@ export default defineComponent({
 
     const countries = {
       en: {
-        flag: "media/flags/united-states.svg",
+        flag: "/public/media/flags/united-states.svg",
         name: "English",
       },
       es: {
-        flag: "media/flags/spain.svg",
+        flag: "/public/media/flags/spain.svg",
         name: "Spanish",
       },
       de: {
-        flag: "media/flags/germany.svg",
+        flag: "/public/media/flags/germany.svg",
         name: "German",
       },
       ja: {
-        flag: "media/flags/japan.svg",
+        flag: "/public/media/flags/japan.svg",
         name: "Japanese",
       },
       fr: {
-        flag: "media/flags/france.svg",
+        flag: "/public/media/flags/france.svg",
         name: "French",
       },
     };

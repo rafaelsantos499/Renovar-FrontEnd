@@ -1567,7 +1567,7 @@
           <div class="d-flex flex-stack">
             <div class="d-flex">
               <img
-                src="media/svg/brand-logos/google-icon.svg"
+                src="/public/media/svg/brand-logos/google-icon.svg"
                 class="w-30px me-6"
                 alt=""
               />
@@ -1601,7 +1601,7 @@
           <div class="d-flex flex-stack">
             <div class="d-flex">
               <img
-                src="media/svg/brand-logos/github.svg"
+                src="/public/media/svg/brand-logos/github.svg"
                 class="w-30px me-6"
                 alt=""
               />
@@ -1635,7 +1635,7 @@
           <div class="d-flex flex-stack">
             <div class="d-flex">
               <img
-                src="media/svg/brand-logos/slack-icon.svg"
+                src="/public/media/svg/brand-logos/slack-icon.svg"
                 class="w-30px me-6"
                 alt=""
               />

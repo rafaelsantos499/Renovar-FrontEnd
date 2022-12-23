@@ -182,11 +182,11 @@ export default defineComponent({
       [
         {
           icon: {
-            file: "media/icons/duotune/coding/cod002.svg",
+            file: "/public/media/icons/duotune/coding/cod002.svg",
             color: "success",
           },
           info: {
-            title: "Media Device",
+            title: "/public/Media Device",
             description: "Voice and video recorder",
           },
           date: "5 day ago",
@@ -197,7 +197,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/general/gen024.svg",
+            file: "/public/media/icons/duotune/general/gen024.svg",
             color: "danger",
           },
           info: {
@@ -212,7 +212,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/maps/map004.svg",
+            file: "/public/media/icons/duotune/maps/map004.svg",
             color: "primary",
           },
           info: {
@@ -227,7 +227,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/abstract/abs027.svg",
+            file: "/public/media/icons/duotune/abstract/abs027.svg",
             color: "warning",
           },
           info: {
@@ -242,7 +242,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/art/art007.svg",
+            file: "/public/media/icons/duotune/art/art007.svg",
             color: "info",
           },
           info: {
@@ -260,7 +260,7 @@ export default defineComponent({
       [
         {
           icon: {
-            file: "media/icons/duotune/abstract/abs042.svg",
+            file: "/public/media/icons/duotune/abstract/abs042.svg",
             color: "info",
           },
           info: {
@@ -275,7 +275,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/general/gen024.svg",
+            file: "/public/media/icons/duotune/general/gen024.svg",
             color: "danger",
           },
           info: {
@@ -290,7 +290,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/abstract/abs027.svg",
+            file: "/public/media/icons/duotune/abstract/abs027.svg",
             color: "warning",
           },
           info: {
@@ -308,11 +308,11 @@ export default defineComponent({
       [
         {
           icon: {
-            file: "media/icons/duotune/ecommerce/ecm002.svg",
+            file: "/public/media/icons/duotune/ecommerce/ecm002.svg",
             color: "success",
           },
           info: {
-            title: "Media Device",
+            title: "/public/Media Device",
             description: "Voice and video recorder",
           },
           date: "3 month ago",
@@ -323,7 +323,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/general/gen024.svg",
+            file: "/public/media/icons/duotune/general/gen024.svg",
             color: "danger",
           },
           info: {
@@ -338,7 +338,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/abstract/abs027.svg",
+            file: "/public/media/icons/duotune/abstract/abs027.svg",
             color: "warning",
           },
           info: {
@@ -353,7 +353,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/abstract/abs042.svg",
+            file: "/public/media/icons/duotune/abstract/abs042.svg",
             color: "info",
           },
           info: {
