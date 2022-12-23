@@ -14,9 +14,13 @@ export interface Cliente {
 }
 
 export interface NewCliente {
-  nome: string;
   email: string;
+  nome: string;
   telefone: string;
+  telefone_two: string;
+  cep: string;
+  logradouro: string;
+  bairro: string;
+  uf: string;
   cidade: string;
-  estado: string;
 }

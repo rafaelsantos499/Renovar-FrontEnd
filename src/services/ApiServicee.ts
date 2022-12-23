@@ -32,6 +32,7 @@ const ApiServicee = {
   put(resource: string, headers: any, body: any) {
     return axiosIstance.put(resource, body, headers);
   },
+
   validateToken(resource: string, token: string) {
     return axiosIstance.get(resource, {
       headers: {

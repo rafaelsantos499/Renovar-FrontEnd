@@ -1,109 +1,235 @@
 <template>
-  <div class="card mb-5">
-    <div class="card-header d-flex flex-column">
-      <div class="border-0 pt-5">
-        <h3 class="card-title">
-          <span class="card-label fw-bolder fs-3 mb-1"
-            >Cadastro de cliente</span
-          >
-        </h3>
+  <el-form
+    @submit.prevent="submit()"
+    :model="newCliente"
+    :rules="rules"
+    ref="formRef"
+    class="demo-ruleForm row"
+    status-icon
+  >
+    <div class="card mb-5">
+      <div class="card-header d-flex flex-column mb-5">
+        <div class="border-0 pt-5">
+          <h3 class="card-title">
+            <span class="card-label fw-bolder fs-3 mb-1"
+              >Cadastro de cliente</span
+            >
+          </h3>
+        </div>
       </div>
-    </div>
-    <div class="card-body">
-      <Form class="form" @submit="submit" :validation-schema="validationSchema">
-        <div class="row">
-          <div class="col-sm-4 mt-3">
-            <label class="fs-5 fw-bold mb-2 required">Nome</label>
-            <Field
-              type="text"
-              class="form-control form-control-solid"
-              v-model="newCliente.nome"
-              name="nome"
-            />
-            <div class="fv-plugins-message-container">
-              <div class="fv-help-block">
-                <ErrorMessage name="nome" />
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 mt-3">
-            <label class="fs-5 fw-bold mb-2 required">Email</label>
-            <Field
-              type="text"
-              class="form-control form-control-solid"
-              v-model="newCliente.email"
-              name="email"
-            />
-            <div class="fv-plugins-message-container">
-              <div class="fv-help-block">
-                <ErrorMessage name="email" />
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 mt-3">
-            <label class="fs-5 fw-bold mb-2 required">Telefone</label>
-            <Field
-              type="text"
-              class="form-control form-control-solid"
-              v-model="newCliente.telefone"
-              name="telefone"
-            />
-            <div class="fv-plugins-message-container">
-              <div class="fv-help-block">
-                <ErrorMessage name="telefone" />
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3 mt-3">
-            <label class="fs-5 fw-bold mb-2 required">cidade</label>
-            <Field
-              type="text"
-              class="form-control form-control-solid"
-              v-model="newCliente.cidade"
-              name="cidade"
-            />
-            <div class="fv-plugins-message-container">
-              <div class="fv-help-block">
-                <ErrorMessage name="cidade" />
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-2 mt-3">
-            <label class="fs-5 fw-bold mb-2 required">Estado</label>
-            <Field
-              type="text"
-              class="form-control form-control-solid"
-              v-model="newCliente.estado"
-              name="estado"
-            />
-            <div class="fv-plugins-message-container">
-              <div class="fv-help-block">
-                <ErrorMessage name="estado" />
-              </div>
-            </div>
+      <div class="row card-body">
+        <div class="col-md-6">
+          <div>
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+              <span class="required">Nome:</span>
+            </label>
+            <!--end::Label-->
+
+            <el-form-item prop="nome">
+              <el-input
+                v-model="newCliente.nome"
+                placeholder="Nome Completo"
+                name="nome"
+                size="small"
+              ></el-input>
+            </el-form-item>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-10">
-          <span class="indicator-label"> Cadastrar </span>
-          <span class="indicator-progress">
+        <div class="col-md-6">
+          <div>
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+              <span class="required">Email:</span>
+            </label>
+            <!--end::Label-->
+
+            <el-form-item prop="email">
+              <el-input
+                v-model="newCliente.email"
+                placeholder="email Completo"
+                name="email"
+                size="small"
+              ></el-input>
+            </el-form-item>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div>
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+              <span class="required">telefone:</span>
+            </label>
+            <!--end::Label-->
+
+            <el-form-item prop="telefone">
+              <el-input
+                size="small"
+                type="phone"
+                v-model="newCliente.telefone"
+                placeholder="(00) 00000-0000"
+                v-maska="['(##) #####-####', '(##) ####-####']"
+              ></el-input>
+            </el-form-item>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+              <span>Outro telefone:</span>
+            </label>
+            <!--end::Label-->
+
+            <el-form-item prop="telefoneTwo">
+              <el-input
+                size="small"
+                type="phone"
+                v-model="newCliente.telefone_two"
+                placeholder=" 00000000"
+                v-maska="['(##) #####-####', '(##) ####-####']"
+              ></el-input>
+            </el-form-item>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-5 mb-5">
+      <div class="card-header d-flex flex-column">
+        <div class="border-0 pt-5">
+          <h3 class="card-title">
+            <span class="card-label fw-bolder fs-3 mb-1">Endereço</span>
+          </h3>
+        </div>
+      </div>
+      <div class="row card-body">
+        <div class="col-md-4">
+          <!--begin::Label-->
+          <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+            <span class="required">Cep:</span>
+          </label>
+          <!--end::Label-->
+
+          <el-form-item prop="cep">
+            <el-input
+              size="small"
+              type="text"
+              v-model="newCliente.cep"
+              placeholder="00000-000"
+              v-maska="'#####-###'"
+            ></el-input>
+          </el-form-item>
+        </div>
+        <div class="col-md-8">
+          <div>
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+              <span class="required">Logradouro:</span>
+            </label>
+            <!--end::Label-->
+
+            <el-form-item prop="logradouro">
+              <el-input
+                size="small"
+                type="text"
+                v-model="newCliente.logradouro"
+                placeholder="Rua barragem do retiro"
+              ></el-input>
+            </el-form-item>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+              <span class="required">Bairro:</span>
+            </label>
+            <!--end::Label-->
+
+            <el-form-item prop="bairro">
+              <el-input
+                size="small"
+                type="text"
+                v-model="newCliente.bairro"
+                placeholder=""
+              ></el-input>
+            </el-form-item>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+              <span class="required">Cidade:</span>
+            </label>
+            <!--end::Label-->
+
+            <el-form-item prop="cidade">
+              <el-input
+                size="small"
+                type="text"
+                v-model="newCliente.cidade"
+                placeholder=""
+              ></el-input>
+            </el-form-item>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+              <span class="required">UF:</span>
+            </label>
+            <!--end::Label-->
+
+            <el-form-item prop="uf">
+              <el-input
+                size="small"
+                type="text"
+                v-model="newCliente.uf"
+                placeholder=""
+              ></el-input>
+            </el-form-item>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end p-0">
+      <div>
+        <button
+          :data-kt-indicator="loading ? 'on' : null"
+          class="btn btn-lg btn-primary"
+          type="submit"
+        >
+          <span v-if="!loading" class="indicator-label">
+            Novo Cliente
+            <span class="svg-icon svg-icon-3 ms-2 me-0">
+              <inline-svg src="icons/duotune/arrows/arr064.svg" />
+            </span>
+          </span>
+          <span v-if="loading" class="indicator-progress">
             Please wait...
             <span
               class="spinner-border spinner-border-sm align-middle ms-2"
             ></span>
           </span>
         </button>
-      </Form>
+      </div>
     </div>
-  </div>
+  </el-form>
 </template>
 <script lang="ts">
 import { ErrorMessage, Field, Form } from "vee-validate";
+<<<<<<< HEAD
+import { Ref, ref } from "vue";
+=======
 import { reactive, Ref, ref,onMounted } from "vue";
+>>>>>>> 261d4a4f7e78eb963993871bf702b1b2133921d5
 import * as Yup from "yup";
 import { NewCliente } from "@/models/Cliente";
 import ApiCliente from "@/services/Cliente/ApiCliente";
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
-import store from "@/store";
 import router from "@/router";
 
 export default {
@@ -113,71 +239,176 @@ export default {
     Form,
   },
   setup() {
-    const validationSchema = Yup.object().shape({
-      nome: Yup.string()
-        .min(2, "Ops! deve possuir no minimo 2 Caracteres.")
-        .max(50, "Ops! deve possuir no maximo 50 Caracteres.")
-        .required("Campo Obrigatorio")
-        .label("nome"),
-      email: Yup.string()
-        .required("Campo Obrigatorio")
-        .email("Ops! email inválido."),
-      telefone: Yup.string()
-        .required("Campo Obrigatorio")
-        .max(20, "Ops! telefone inválido"),
-      cidade: Yup.string().required("Campo Obrigatorio"),
-      estado: Yup.string().required("Campo Obrigatorio"),
-    });
+    const loading = ref(false);
+    const formRef = ref<null | HTMLFormElement>(null);
+
     const newCliente: Ref<NewCliente> = ref({
+      email: "",
       nome: "",
       telefone: "",
+      telefone_two: "",
+      cep: "",
+      logradouro: "",
+      bairro: "",
+      uf: "",
       cidade: "",
-      estado: "",
-      email: "",
     });
    
 
     const submit = () => {
-      ApiCliente.newCliente(newCliente.value).then(({ data }) => {
-        console.log(data);
-        if (!data.error) {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 1500,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+      if (!formRef.value) {
+        return;
+      }
+      console.log(newCliente.value);
+      formRef.value.validate((valid) => {
+        if (valid) {
+          loading.value = true;
 
-          Toast.fire({
-            icon: "success",
-            title: "Cliente cadastrado com sucesso",
-          });
+          ApiCliente.newCliente(newCliente.value)
+            .then(({ data }) => {
+              console.log(data);
+              if (!data.error) {
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: "top-end",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 1500,
+                  didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                  },
+                });
 
-          router.push({ name: "clientes" });
+                Toast.fire({
+                  icon: "success",
+                  title: "Cliente cadastrado com sucesso",
+                });
 
-          return;
+                router.push({ name: "clientes" });
+
+                return;
+              } else {
+                Swal.fire({
+                  text: data.message,
+                  icon: "error",
+                  buttonsStyling: false,
+                  confirmButtonText: "Tentar Novamente!",
+                  customClass: {
+                    confirmButton: "btn fw-bold btn-light-danger",
+                  },
+                });
+                loading.value = false;
+              }
+
+              return false;
+            })
+            .catch((err) => {
+              loading.value = false;
+              Swal.fire({
+                text: "error",
+                icon: "error",
+                buttonsStyling: false,
+                confirmButtonText: "Tentar Novamente!",
+                customClass: {
+                  confirmButton: "btn fw-bold btn-light-danger",
+                },
+              });
+            });
         }
-
-        Swal.fire({
-          text: data.message,
-          icon: "error",
-          buttonsStyling: false,
-          confirmButtonText: "Tentar Novamente!",
-          customClass: {
-            confirmButton: "btn fw-bold btn-light-danger",
-          },
-        });
       });
     };
+
+    function validateCep(rule: any, value: any, callback: any) {
+      if (value === "") {
+        callback(new Error("Digite um cep"));
+      } else {
+        fetch(`https://viacep.com.br/ws/${value}/json/`)
+          .then((r) => r.json())
+          .then((response) => {
+            newCliente.value.logradouro = response.logradouro;
+            newCliente.value.bairro = response.bairro;
+            newCliente.value.cidade = response.localidade;
+            newCliente.value.uf = response.uf;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        return true;
+      }
+    }
+
+    const rules = ref({
+      nome: [
+        {
+          required: true,
+          message: "Nome obrigatória",
+          trigger: "blur",
+        },
+      ],
+      email: [
+        {
+          required: true,
+          message: "Email inválido",
+          trigger: "blur",
+        },
+      ],
+      telefone: [
+        {
+          required: true,
+          trigger: "change",
+          message: "Telefone obrigatório",
+        },
+      ],
+      telefoneTwo: [
+        {
+          trigger: "change",
+        },
+      ],
+      cep: [
+        {
+          required: true,
+          trigger: "blur",
+          validator: validateCep,
+        },
+      ],
+      logradouro: [
+        {
+          required: true,
+          message: "Preencha o campo.",
+          trigger: "blur",
+        },
+      ],
+      uf: [
+        {
+          required: true,
+          message: "Preencha o campo.",
+          trigger: "blur",
+        },
+      ],
+      bairro: [
+        {
+          required: true,
+          message: "Preencha o campo.",
+          trigger: "blur",
+        },
+      ],
+      cidade: [
+        {
+          required: true,
+          message: "Preencha o campo.",
+          trigger: "blur",
+        },
+      ],
+    });
+
     return {
       submit,
-      validationSchema,
       newCliente,
+      rules,
+      loading,
+      formRef,
     };
   },
 };

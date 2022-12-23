@@ -15,6 +15,7 @@ import ApiService from "@/core/services/ApiService";
 import { initApexCharts } from "@/core/plugins/apexcharts";
 import { initInlineSvg } from "@/core/plugins/inline-svg";
 import { initVeeValidate } from "@/core/plugins/vee-validate";
+import Maska from "maska";
 
 import "@/core/plugins/keenthemes";
 import "@/core/plugins/prismjs";
@@ -25,6 +26,7 @@ const app = createApp(App);
 app.use(store);
 app.use(router);
 app.use(ElementPlus);
+app.use(Maska);
 
 ApiService.init(app);
 MockAdapter.init(app);
