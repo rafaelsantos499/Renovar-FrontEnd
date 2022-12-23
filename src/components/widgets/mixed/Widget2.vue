@@ -6,7 +6,7 @@
         <router-link class="col" to="">
           <div class="col bg-light-warning px-6 py-8 rounded-2 me-7 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
-              <inline-svg src="media/icons/duotune/arrows/arr075.svg" />
+              <inline-svg src="/public/media/icons/duotune/arrows/arr075.svg" />
             </span>
             <a href="#" class="text-warning fw-bold fs-6"> Novo Pedido </a>
           </div>
@@ -15,7 +15,7 @@
         <router-link class="col" to="">
           <div class="col bg-light-primary px-6 py-8 rounded-2 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
-              <inline-svg src="media/icons/duotune/arrows/arr075.svg" />
+              <inline-svg src="/public/media/icons/duotune/arrows/arr075.svg" />
             </span>
             <a href="#" class="text-primary fw-bold fs-6"> Novo cliente </a>
           </div>
@@ -27,13 +27,13 @@
       <!-- <div class="row m-0">
           <div class="col bg-light-danger px-6 py-8 rounded-2 me-7">
             <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
-              <inline-svg src="media/icons/duotune/abstract/abs027.svg" />
+              <inline-svg src="/public/media/icons/duotune/abstract/abs027.svg" />
             </span>
             <a href="#" class="text-danger fw-bold fs-6 mt-2"> Item Orders </a>
           </div>
           <div class="col bg-light-success px-6 py-8 rounded-2">
             <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
-              <inline-svg src="media/icons/duotune/communication/com010.svg" />
+              <inline-svg src="/public/media/icons/duotune/communication/com010.svg" />
             </span>
             <a href="#" class="text-success fw-bold fs-6 mt-2"> Bug Reports </a>
           </div>

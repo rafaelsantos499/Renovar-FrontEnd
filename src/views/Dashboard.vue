@@ -17,7 +17,6 @@ import { defineComponent, onMounted } from "vue";
 import TableWidget9 from "@/components/widgets/tables/Widget9.vue";
 import TableWidget5 from "@/components/widgets/tables/Widget5.vue";
 import ListWidget1 from "@/components/widgets/lists/Widget1.vue";
-import ListWidget2 from "@/components/widgets/lists/Widget2.vue";
 import ListWidget3 from "@/components/widgets/lists/Widget3.vue";
 import ListWidget5 from "@/components/widgets/lists/Widget5.vue";
 import ListWidget6 from "@/components/widgets/lists/Widget6.vue";
@@ -33,7 +32,6 @@ export default defineComponent({
     TableWidget9,
     TableWidget5,
     ListWidget1,
-    ListWidget2,
     ListWidget3,
     ListWidget5,
     ListWidget6,

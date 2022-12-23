@@ -5,7 +5,7 @@
       <ListsWidget1 widget-classes="card-xl-stretch mb-xl-8"></ListsWidget1>
     </div>
     <div class="col-xl-4">
-      <ListsWidget2 widget-classes="card-xl-stretch mb-xl-8"></ListsWidget2>
+      
     </div>
     <div class="col-xl-4">
       <ListsWidget3
@@ -48,7 +48,6 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
 import ListsWidget1 from "@/components/widgets/lists/Widget1.vue";
-import ListsWidget2 from "@/components/widgets/lists/Widget2.vue";
 import ListsWidget3 from "@/components/widgets/lists/Widget3.vue";
 import ListsWidget4 from "@/components/widgets/lists/Widget4.vue";
 import ListsWidget5 from "@/components/widgets/lists/Widget5.vue";

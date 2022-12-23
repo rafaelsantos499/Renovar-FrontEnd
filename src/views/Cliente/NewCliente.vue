@@ -221,7 +221,11 @@
 </template>
 <script lang="ts">
 import { ErrorMessage, Field, Form } from "vee-validate";
+<<<<<<< HEAD
 import { Ref, ref } from "vue";
+=======
+import { reactive, Ref, ref,onMounted } from "vue";
+>>>>>>> 261d4a4f7e78eb963993871bf702b1b2133921d5
 import * as Yup from "yup";
 import { NewCliente } from "@/models/Cliente";
 import ApiCliente from "@/services/Cliente/ApiCliente";
@@ -249,6 +253,7 @@ export default {
       uf: "",
       cidade: "",
     });
+   
 
     const submit = () => {
       if (!formRef.value) {

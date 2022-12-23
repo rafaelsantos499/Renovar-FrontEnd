@@ -17,14 +17,14 @@ export default {
     }
   },
   usuarionaoAutenticado() {
-    if (token) {
-      store.dispatch(Actions.VERIFY_AUTH).catch(() => {
-        store.dispatch(Actions.LOGOUT);
-        router.push({ name: "sign-in" });
-      });
-    } else {
-      store.dispatch(Actions.LOGOUT);
-      router.push({ name: "sign-in" });
-    }
+    // if (token) {
+    //   store.dispatch(Actions.VERIFY_AUTH).catch(() => {
+    //     store.dispatch(Actions.LOGOUT);
+    //     router.push({ name: "sign-in" });
+    //   });
+    // } else {
+    //   store.dispatch(Actions.LOGOUT);
+    //   router.push({ name: "sign-in" });
+    // }
   },
 };
