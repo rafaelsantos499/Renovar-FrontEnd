@@ -130,7 +130,8 @@
 
                 <td class="text-center">   
                   <a
-                 @click="modal = true"
+                  @click="clienteEspecificoDadosModal(item)"
+                  data-bs-toggle="modal" data-bs-target="#modalCliente"
                       class="
                         btn
                         btn-icon
@@ -194,14 +195,13 @@
     </div>
     <!--begin::Body-->
   </div>
-  <el-dialog v-model="modal" title="Shipping address">
-    <el-table :data="gridData">
-      <el-table-column property="date" label="Date" width="150" />
-      <el-table-column property="name" label="Name" width="200" />
-      <el-table-column property="address" label="Address" />
-    </el-table>
-  </el-dialog>
-  <!--end::Tables Widget 9-->
+   <ModalVizualizar :data="clienteDadosModal" />
+ 
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
 </template>
 
 <script lang="ts">
@@ -213,12 +213,14 @@ import KTLoader from "@/components/Loader.vue";
 
 import { defineComponent, onMounted, reactive, ref } from "vue";
 import MapaRouter from "@/components/MapaRouter.vue";
+import ModalVizualizar from "./components/modalVizualizar.vue";
 
 export default defineComponent({
   name: "clientes",
   components: {
     KTLoader,
-  },
+    ModalVizualizar
+},
   props: {
     widgetClasses: String,
   },
@@ -228,12 +230,19 @@ export default defineComponent({
     const todosClientes = ref();
     const inputSearch = ref();
     const clienteNome: any = router.currentRoute.value;
+    const clienteDadosModal = ref()
+   
+
+    const  clienteEspecificoDadosModal = (cliente) => {
+      clienteDadosModal.value = cliente
+    }
 
     onMounted(() => {
       ApiCliente.clientesGet().then(({ data }) => {
         todosClientes.value = data.data.clientes;
       });
     });
+
 
     const gridData = [
   {
@@ -258,6 +267,8 @@ export default defineComponent({
   },
 ]
     return {
+      clienteEspecificoDadosModal,
+      clienteDadosModal,
       todosClientes,
       inputSearch,
       modal,
