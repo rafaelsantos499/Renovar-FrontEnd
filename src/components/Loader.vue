@@ -1,16 +1,16 @@
 <template>
   <!--begin::Page loader-->
   <template v-if="loaderType === 'spinner-message'">
-    <div class="page-loader flex-column">
+    <div style="background: transparent;"  class="page-loader flex-column">
       <span class="spinner-border text-primary" role="status"></span>
       <span class="text-muted fs-6 fw-bold mt-5">Loading...</span>
     </div>
   </template>
-  <template v-else-if="loaderType === 'spinner-logo'">
-    <div class="page-loader flex-column">
+  <template  v-else-if="loaderType === 'spinner-logo'">
+    <div  class="page-loader flex-column">
       <img alt="Logo" class="max-h-75px" :src="logo" />
 
-      <div class="d-flex align-items-center mt-5">
+      <div style="background: transparent;" class="d-flex align-items-center mt-5">
         <span class="spinner-border text-primary" role="status"></span>
         <span class="text-muted fs-6 fw-bold ms-5">Loading...</span>
       </div>

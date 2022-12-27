@@ -5,40 +5,66 @@
         <div class="modal-body">
           <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
             <el-tab-pane label="Cliente" name="first">
-            <div class="row mb-3">
-              <div class="col-2 ">
-                <div class="text-muted">ID:</div>
-                <div>{{ data?.user_id }}</div>
-              </div> 
-              <div class="col-10 ">
-                <div class="text-muted">Nome:</div>
-                <div>{{ data?.nome }}</div>
+              <div class="d-flex flex-wrap mb-3">
+                <div class="me-4 ">
+                  <div class="text-dark">ID:</div>
+                  <div class="text-muted">{{ data?.user_id }}</div>
+                </div>
+                <div class="me-4">
+                  <div class="text-dark">Nome:</div>
+                  <div class="text-muted">{{ data?.nome }}</div>
+                </div>
+                <div class="me-4">
+                  <div class="text-dark">Email:</div>
+                  <div class="text-muted">{{ data?.email }}</div>
+                </div>
+                            
+                <div class="me-4 ">
+                  <div class="text-dark">Telefone:</div>
+                  <div>{{ data?.telefone }}</div>
+                </div>
+                <div class="me-4 ">
+                  <div class="text-dark">Telefone:</div>
+                  <div>{{ data?.telefone_two ?  data?.telefone_two  : 'Sem Contato' }}</div>
+                </div>
               </div>             
-            </div>
-            <div class="row mb-3">
-              <div class="col-6  ">
-                <label>Telefone:</label>
-                <div>{{ data?.telefone }}</div>
-              </div>
-              <div class="col-6  ">
-                <label>Telefone:</label>
-                <div>{{ data?.telefone_two ?? 'Sem Contato' }}</div>
-              </div>
-              </div>
-            <div class="row mb-3">
-              <div class="col-5 ">
-                <div class="text-muted">Email:</div>
-                <div>{{ data?.email }}</div>
+            </el-tab-pane>
+            <el-tab-pane label="Endereço" name="second">
+              <div class="d-flex mb-3 flex-wrap ">
+                <div class="me-4">
+                  <div class="text-dark">Cep:</div>
+                  <div class="text-muted">{{ data?.cep }}</div>
+                </div>
+                <div class="me-4">
+                  <div class="text-dark">Uf:</div>
+                  <div class="text-muted">{{ data?.uf }}</div>
+                </div>
+                <div class="me-4">
+                  <div class="text-dark">Cidade:</div>
+                  <div class="text-muted">{{ data?.cidade }}</div>
+                </div>
+                <div class="me-4">
+                  <div class="text-dark">Bairro:</div>
+                  <div class="text-muted">{{ data?.bairro }}</div>
+                </div> 
+                <div class="me-4">
+                  <div class="text-dark">Logradouro:</div>
+                  <div class="text-muted">{{data?.logradouro}}</div>               
               </div>
             </div>
             </el-tab-pane>
-            <el-tab-pane label="Endereço" name="second">Config</el-tab-pane>
-            <el-tab-pane label="Role" name="third">Role</el-tab-pane>
-            <el-tab-pane label="Task" name="fourth">Task</el-tab-pane>
+            <el-tab-pane label="Pedidos" name="third">
+              <div class="d-flex">
+                <div class="col-6">
+                  <div class="text-dark">Total de pedidos:</div>
+                  <div class="text-muted">{{ data?.pedidos.length == 0 ? 'Sem pedido' :  data?.pedidos.length }}</div>
+                </div>
+              </div>
+            </el-tab-pane>
           </el-tabs>
-
+  
         </div>
-
+  
       </div>
     </div>
   </div>
@@ -54,6 +80,7 @@ export  default defineComponent({
 setup(props){
 
   const activeName = ref('first')
+ 
   
 const handleClick = (tab: TabsPaneContext, event: Event) => {
   console.log(tab, event)

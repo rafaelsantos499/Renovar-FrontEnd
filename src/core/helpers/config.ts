@@ -102,7 +102,7 @@ export const contentWidthFluid = computed(() => {
  * @returns {string}
  */
 export const loaderLogo = computed(() => {
-  return "production" ? "/metronic8/vue/demo2/" : "/" + store.getters.layoutConfig("loader.logo");
+  return "production" ? "/public/media/logos/logo-6.svg" : "/" + store.getters.layoutConfig("loader.logo");
 });
 
 /**

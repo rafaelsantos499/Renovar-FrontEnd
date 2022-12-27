@@ -1,4 +1,5 @@
 <template>
+  <KTLoader v-if="loaderEnabled" :logo="loaderLogo"></KTLoader>
   <el-form
     @submit.prevent="submit()"
     :model="newCliente"
@@ -227,14 +228,23 @@ import { NewCliente } from "@/models/Cliente";
 import ApiCliente from "@/services/Cliente/ApiCliente";
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import router from "@/router";
+import { useRouter } from "vue-router";
+import KTLoader from "@/components/Loader.vue";
+import {
+  loaderEnabled,
+  loaderLogo,
+} from "@/core/helpers/config";
+
 
 export default {
   components: {
     ErrorMessage,
     Field,
     Form,
+    KTLoader
   },
   setup() {
+    const router = useRouter()
     const loading = ref(false);
     const formRef = ref<null | HTMLFormElement>(null);
 
@@ -279,10 +289,8 @@ export default {
                 Toast.fire({
                   icon: "success",
                   title: "Cliente cadastrado com sucesso",
-                });
-
-                router.push({ name: "clientes" });
-
+                });                
+                router.push({name: 'clientes'})
                 return;
               } else {
                 Swal.fire({
@@ -296,7 +304,7 @@ export default {
                 });
                 loading.value = false;
               }
-
+              
               return false;
             })
             .catch((err) => {
@@ -345,10 +353,13 @@ export default {
       ],
       email: [
         {
-          required: true,
+          required: true,  
+          message: "Email obrigatorio",
+        },{
+          type: "email",
           message: "Email inválido",
-          trigger: "blur",
-        },
+          trigger: "change",
+        }
       ],
       telefone: [
         {
@@ -373,28 +384,28 @@ export default {
         {
           required: true,
           message: "Preencha o campo.",
-          trigger: "blur",
+          trigger: "change",
         },
       ],
       uf: [
         {
           required: true,
           message: "Preencha o campo.",
-          trigger: "blur",
+          trigger: "change",
         },
       ],
       bairro: [
         {
           required: true,
           message: "Preencha o campo.",
-          trigger: "blur",
+          trigger: "change",
         },
       ],
       cidade: [
         {
           required: true,
           message: "Preencha o campo.",
-          trigger: "blur",
+          trigger: "change",
         },
       ],
     });
@@ -405,6 +416,8 @@ export default {
       rules,
       loading,
       formRef,
+      loaderEnabled,
+      loaderLogo
     };
   },
 };

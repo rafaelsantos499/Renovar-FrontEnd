@@ -8,14 +8,14 @@ const config: LayoutConfigTypes = {
     type: "default",
     primaryColor: "#009EF7",
     logo: {
-      dark: "media/logos/Agua-solar-apr.png",
-      light: "media/logos/Agua-solar-apr.png",
+      dark: "/public/media/logos/logo-6.svg",
+      light: "/public/media/logos/logo-6.svg",
     },
   },
   loader: {
-    logo: "media/logos/logo-1-dark.svg",
+    logo: "/public/media/logos/logo-6.svg",
     display: true,
-    type: "default",
+    type: "spinner-logo",
   },
   scrollTop: {
     display: true,
