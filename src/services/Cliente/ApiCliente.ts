@@ -16,7 +16,7 @@ export default {
   newCliente(date) {
     return ApiServicee.post("clientes", headers, date);
   },
-  putCliente(id: number | string, date) {
+  putCliente(id: number | string , date) {
     return ApiServicee.put(`clientes/${id}`, headers, date);
   },
 };

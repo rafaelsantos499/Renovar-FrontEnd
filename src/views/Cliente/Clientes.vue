@@ -60,17 +60,17 @@
             table table-row-dashed table-row-gray-300
             align-middle
             gs-0
-            gy-4
+            gy-2
           "
         >
           <!--begin::Table head-->
           <thead>
             <tr class="fw-bolder text-muted">
-              <th class="w-150px">Cliente</th>
+              <th class="w-150px p">Cliente</th>
               <th class="min-w-70px">Localidade</th>
               <th class="min-w-140px">Telefone</th>
               <th class="min-w-50px text-center">Pedidos</th>
-              <th class="min-w-100px text-end">Ação</th>
+              <th class="min-w-100px text-center">Ação</th>
             </tr>
           </thead>
           <!--end::Table head-->
@@ -128,19 +128,61 @@
                   </p>
                 </td>
 
-                <td class="text-end">
+                <td class="text-center">   
+                  <a
+                  @click="clienteEspecificoDadosModal(item)"
+                  data-bs-toggle="modal" data-bs-target="#modalCliente"
+                      class="
+                        btn
+                        btn-icon
+                        btn-bg-light
+                        btn-active-color-primary
+                        w-25px
+                        h-25px                       
+                        me-2
+                      "
+                    >
+                      <span class="svg-icon svg-icon-3">
+                        <inline-svg src="/public/media/açoes/view-show.svg" />
+                      </span>
+                    </a>
                   <router-link
-                    :to="{
+                  :to="{
                       name: 'cliente',
                       params: { nome: item.nome, id: item.id },
                     }"
-                    class="
-                      btn btn-bg-light btn-active-color-primary btn-sm
-                      me-1
-                    "
-                  >
-                    Ver mais
-                  </router-link>
+                      class="
+                        btn
+                        btn-icon
+                        btn-bg-light
+                        btn-active-color-primary
+                        w-25px
+                        h-25px 
+                        me-2
+                      "
+                    >
+                      <span class="svg-icon svg-icon-3">
+                        <inline-svg src="/public/media/açoes/edit.svg" />
+                      </span>
+                    </router-link>
+                    <router-link
+                  :to="{
+                      name: 'cliente',
+                      params: { nome: item.nome, id: item.id },
+                    }"
+                      class="
+                        btn
+                        btn-icon
+                        btn-bg-light
+                        btn-active-color-primary
+                        w-25px
+                        h-25px                         
+                      "
+                    >
+                      <span class="svg-icon svg-icon-3">
+                        <inline-svg src="/public/media/açoes/edit.svg" />
+                      </span>
+                    </router-link>
                 </td>
               </tr>
             </template>
@@ -153,7 +195,13 @@
     </div>
     <!--begin::Body-->
   </div>
-  <!--end::Tables Widget 9-->
+   <ModalVizualizar :data="clienteDadosModal" />
+ 
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
 </template>
 
 <script lang="ts">
@@ -165,20 +213,29 @@ import KTLoader from "@/components/Loader.vue";
 
 import { defineComponent, onMounted, reactive, ref } from "vue";
 import MapaRouter from "@/components/MapaRouter.vue";
+import ModalVizualizar from "./components/modalVizualizar.vue";
 
 export default defineComponent({
   name: "clientes",
   components: {
     KTLoader,
-  },
+    ModalVizualizar
+},
   props: {
     widgetClasses: String,
   },
   setup() {
     const token = JwtService.getToken();
+    const modal = ref(false)
     const todosClientes = ref();
     const inputSearch = ref();
     const clienteNome: any = router.currentRoute.value;
+    const clienteDadosModal = ref()
+   
+
+    const  clienteEspecificoDadosModal = (cliente) => {
+      clienteDadosModal.value = cliente
+    }
 
     onMounted(() => {
       ApiCliente.clientesGet().then(({ data }) => {
@@ -186,9 +243,36 @@ export default defineComponent({
       });
     });
 
+
+    const gridData = [
+  {
+    date: '2016-05-02',
+    name: 'John Smith',
+    address: 'No.1518,  Jinshajiang Road, Putuo District',
+  },
+  {
+    date: '2016-05-04',
+    name: 'John Smith',
+    address: 'No.1518,  Jinshajiang Road, Putuo District',
+  },
+  {
+    date: '2016-05-01',
+    name: 'John Smith',
+    address: 'No.1518,  Jinshajiang Road, Putuo District',
+  },
+  {
+    date: '2016-05-03',
+    name: 'John Smith',
+    address: 'No.1518,  Jinshajiang Road, Putuo District',
+  },
+]
     return {
+      clienteEspecificoDadosModal,
+      clienteDadosModal,
       todosClientes,
       inputSearch,
+      modal,
+      gridData
     };
   },
 });

@@ -25,6 +25,12 @@ const DocMenuConfig = [
         svgIcon: "media/icons/duotune/general/gen022.svg",
         fontIcon: "bi-archive",
       },
+      {
+        heading: "Pedidos",
+        route: "/pedido/list",
+        svgIcon: "media/icons/duotune/general/gen022.svg",
+        fontIcon: "bi-archive",
+      },
     ],
   },
   {
