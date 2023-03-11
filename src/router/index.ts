@@ -32,15 +32,27 @@ const routes: Array<RouteRecordRaw> = [
         props: true,
       },
       {
-        path: "/pedido/:id_cliente/:id_pedido",
+        path: "/pedido/cliente=:id_cliente&Pedido=:id_pedido",
         name: "pedido",
         component: () => import("@/views/Pedido/Pedido.vue"),
+        props: true,            
+      },
+      {
+        path: "/pedido/cliente=:id_cliente&Pedido=:id_pedido&produto=:id_produto",
+        name: "produto",
+        component: () => import("@/views/Pedido/Produto.vue"),
         props: true,
       },
       {
         path: "/pedido/list",
         name: "pedido-list",
         component: () => import("@/views/Pedido/PedidoList.vue"),
+        props: true,
+      },
+      {
+        path: "/novo-pedido",
+        name: "novo-pedido",
+        component: () => import("@/views/Pedido/NovoPedido.vue"),
         props: true,
       },
       {
@@ -226,8 +238,9 @@ const router = createRouter({
 router.beforeEach(() => {
   // reset config to initial state
   store.commit(Mutations.RESET_LAYOUT_CONFIG);
-
   store.dispatch(Actions.VERIFY_AUTH);
+
+  Gard.usuarionaoAutenticado()
 
   // Scroll page to top on every route change
   setTimeout(() => {

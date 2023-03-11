@@ -145,7 +145,7 @@
                       <span class="svg-icon svg-icon-3">
                         <inline-svg src="/public/media/açoes/view-show.svg" />
                       </span>
-                    </a>
+                    </a>                    
                   <router-link
                   :to="{
                       name: 'cliente',

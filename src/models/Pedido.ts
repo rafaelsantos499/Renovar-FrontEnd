@@ -7,4 +7,9 @@ export interface Pedido {
   preco_pedido: number;
   quantidade_de_inversor: number;
   vendedor: string;
+  cep: string;
+  logradouro: string;
+  bairro: string;
+  uf: string;
+  cidade: string;
 }

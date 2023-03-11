@@ -1,18 +1,23 @@
 import JwtService from "@/core/services/JwtService";
-import ApiService from "@/services/ApiServicee";
-import { AxiosResponse } from "axios";
-const token = JwtService.getToken();
+import ApiServicee from "@/services/ApiServicee";
+import { AxiosPromise } from "axios";
 
-const headers = {
-  headers: {
-    Authorization: "Bearer " + token,
-  },
-};
+// const token = JwtService.getToken();
+// const headers = {
+//   headers: {
+//     Authorization: "Bearer " + token,
+//   },
+// };
 
 const ApiPedido = {
-  get(id) {
-    return ApiService.get(`pedidos/${id}`, headers);
+  get(id: number | string | null = null): AxiosPromise {
+    let url = id ? `pedidos/${id}` : "pedidos"
+    
+    return ApiServicee.get(url)
   },
+  PutProduto(payload){
+   return ApiServicee.put('pedido/update-produto', payload)
+  }
 };
 
 export default ApiPedido;

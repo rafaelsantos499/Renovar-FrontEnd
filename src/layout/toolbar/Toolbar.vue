@@ -52,7 +52,7 @@
           <!--begin::Menu-->
           <router-link
             class="btn btn-sm btn-light-danger"
-            :to="{ name: 'novoCliente' }"
+            :to="{ name: 'novo-pedido' }"
           >
             <span class="svg-icon svg-icon-3">
               <inline-svg src="media/icons/duotune/arrows/arr075.svg" />

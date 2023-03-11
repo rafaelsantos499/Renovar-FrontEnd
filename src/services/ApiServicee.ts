@@ -1,3 +1,4 @@
+import JwtService from "@/core/services/JwtService";
 import axios from "axios";
 import { AxiosResponse, AxiosRequestConfig } from "axios";
 
@@ -19,17 +20,24 @@ const axiosIstance = axios.create({
 //   }
 // );
 
+const token = JwtService.getToken();
+const headers = {
+  headers: {
+    Authorization: "Bearer " + token,
+  },
+};
+
 const ApiServicee = {
-  post(resource: string, params: any, body: any = null) {
-    return axiosIstance.post(resource, body, params);
+  post(resource: string, body: any = null) {
+    return axiosIstance.post(resource, body, headers);
   },
   postLogin(resource: string, params: any) {
     return axiosIstance.post(resource, params);
   },
-  get(resource: string, params: any) {
-    return axiosIstance.get(resource, params);
+  get(resource: string,) {
+    return axiosIstance.get(resource, headers);
   },
-  put(resource: string, headers: any, body: any) {
+  put(resource: string, body: any) {
     return axiosIstance.put(resource, body, headers);
   },
 
